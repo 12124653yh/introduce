@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>★☆..[재윤]e의 소개 프로젝트 목차..☆★</title>
+    <style>
+        /* 기본 리셋 및 전역 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* 라이트 모드 (기본 싸이월드 블루 도트 스킨) */
+            background-color: #7ba3cd;
+            background-image: 
+                radial-gradient(#6891bc 15%, transparent 16%),
+                radial-gradient(#6891bc 15%, transparent 16%);
+            background-size: 16px 16px;
+            background-position: 0 0, 8px 8px;
+            font-family: 'Gulim', '굴림', 'Dotum', '돋움', AppleSDGothic, sans-serif;
+            font-size: 12px;
+            color: #333333;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 겉 프레임 */
+        .wrapper {
+            width: 100%;
+            max-width: 860px;
+            background-color: #b3d1ee;
+            border: 1px solid #739ec5;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 2px 3px 14px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        /* 내부 점선 흰색 바탕 */
+        .inner-box {
+            background-color: #ffffff;
+            border: 2px dashed #4e86b8;
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* 상단 헤더 (방문자수 & 다크모드 버튼 & BGM 플레이어) */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 12px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .visitor-count {
+            font-size: 11px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .visitor-count .today {
+            color: #ff3b00;
+            font-weight: bold;
+        }
+
+        .title-text {
+            font-size: 15px;
+            font-weight: bold;
+            color: #10599a;
+            text-decoration: underline;
+            letter-spacing: -0.5px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .bgm-bar {
+            background: #f0f0f0;
+            border: 1px solid #cccccc;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #444;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bgm-btn {
+            background: #e4e4e4;
+            border: 1px outset #fff;
+            padding: 2px 6px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .bgm-btn:active {
+            border: 1px inset #999;
+        }
+
+        /* 전광판 배너 (marquee 효과) */
+        .marquee-bar {
+            background-color: #fff9d7;
+            border: 1px dotted #e2b740;
+            padding: 6px 10px;
+            margin-bottom: 14px;
+            font-size: 11px;
+            color: #b16c00;
+            overflow: hidden;
+            white-space: nowrap;
+            border-radius: 4px;
+        }
+
+        .marquee-inner {
+            display: inline-block;
+            animation: scroll-left 16s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 본문 2단 레이아웃 */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 15px;
+        }
+
+        /* 좌측 프로필 영역 */
+        .left-profile {
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            padding: 12px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .today-is {
+            background: #fff;
+            border: 1px solid #d0d0d0;
+            padding: 5px;
+            font-size: 11px;
+            color: #555;
+            border-radius: 4px;
+        }
+
+        .today-is span {
+            color: #ff5500;
+            font-weight: bold;
+        }
+
+        /* 사진 박스 (스티커 사진 느낌) */
+        .photo-frame {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 6px;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #eeeeee;
+            border-radius: 2px;
+        }
+
+        .photo-caption {
+            font-size: 11px;
+            color: #888888;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .buddy-bubble {
+            background: #fff5e6;
+            border: 1px solid #ffcc88;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 11px;
+            color: #995500;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .buddy-id {
+            font-weight: bold;
+            color: #ff6600;
+        }
+
+        .profile-status {
+            font-size: 11px;
+            line-height: 1.7;
+            color: #555555;
+            background: #ffffff;
+            border: 1px dashed #dcdcdc;
+            padding: 8px 10px;
+            text-align: left;
+            word-break: break-all;
+            border-radius: 4px;
+        }
+
+        .wave-select-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align: left;
+        }
+
+        .wave-select-label {
+            font-size: 10px;
+            color: #777;
+            font-weight: bold;
+        }
+
+        .wave-select {
+            width: 100%;
+            padding: 6px 8px;
+            font-size: 11px;
+            border: 1px solid #aaa;
+            font-family: inherit;
+            background-color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* 우측 메인 콘텐츠 */
+        .main-content {
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            padding: 15px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f4f7fb;
+            border-left: 4px solid #2878b5;
+            padding: 6px 12px;
+            font-weight: bold;
+            color: #2878b5;
+            font-size: 13px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .section-header .sub {
+            font-size: 11px;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .intro-desc {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #444;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px 12px;
+        }
+
+        /* ========================================
+           목차 카드 리스트 (Step Cards)
+        ======================================== */
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .step-card {
+            background: #ffffff;
+            border: 1px solid #cfd9e8;
+            border-radius: 8px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card:hover {
+            border-color: #2878b5;
+            box-shadow: 0 4px 12px rgba(40, 120, 181, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* 3단계 최종본 강조 스타일 */
+        .step-card.highlight {
+            border: 1.5px solid #ff7733;
+            background: #fffdf9;
+        }
+
+        .step-card.highlight:hover {
+            border-color: #ff5500;
+            box-shadow: 0 4px 12px rgba(255, 119, 51, 0.2);
+        }
+
+        .step-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .step-badge-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .step-badge {
+            background: #2878b5;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 7px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+        }
+
+        .step-badge.highlight {
+            background: #ff7733;
+        }
+
+        .file-name-tag {
+            background: #edf2f7;
+            color: #4a5568;
+            font-family: Consolas, monospace;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid #cbd5e0;
+        }
+
+        .step-status-tag {
+            font-size: 11px;
+            color: #0d7f3f;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #10599a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .step-card.highlight .step-title {
+            color: #d9381e;
+        }
+
+        .step-desc {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .step-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag-pill {
+            font-size: 10px;
+            color: #556b82;
+            background: #eef3f9;
+            border: 1px solid #d4e0ed;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* 카드 하단 액션 버튼 영역 */
+        .step-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-top: 6px;
+            border-top: 1px dashed #e2e8f0;
+        }
+
+        /* 레트로 스타일 버튼 */
+        .btn-link {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.15s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-primary {
+            background: #2878b5;
+            color: #ffffff;
+            border: 2px outset #589bce;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary:hover {
+            background: #1f679e;
+        }
+
+        .btn-primary:active {
+            border-style: inset;
+            transform: scale(0.97);
+        }
+
+        .btn-accent {
+            background: #ff7733;
+            color: #ffffff;
+            border: 2px outset #ffaa77;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+        }
+
+        .btn-accent:hover {
+            background: #e6601f;
+        }
+
+        .btn-accent:active {
+            border-style: inset;
+            transform: scale(0.97);
+        }
+
+        .btn-outline {
+            background: #f0f0f0;
+            color: #444;
+            border: 2px outset #ffffff;
+            padding: 8px 12px;
+            font-size: 11px;
+            font-weight: normal;
+        }
+
+        .btn-outline:hover {
+            background: #e4e4e4;
+        }
+
+        .btn-outline:active {
+            border-style: inset;
+        }
+
+        /* ========================================
+           진행 단계 비교 요약 표 (Comparison Table)
+        ======================================== */
+        .comparison-section {
+            background: #fafbfc;
+            border: 1px solid #e1e7ee;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .comparison-title {
+            font-weight: bold;
+            color: #2878b5;
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            min-width: 440px;
+        }
+
+        .comp-table th, .comp-table td {
+            border: 1px solid #d9e2ec;
+            padding: 7px 10px;
+            text-align: left;
+        }
+
+        .comp-table th {
+            background: #ebf1f8;
+            color: #10599a;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .comp-table td {
+            background: #ffffff;
+            color: #444;
+        }
+
+        .comp-table tr.active-row td {
+            background: #fffdf5;
+            font-weight: 500;
+        }
+
+        /* 하단 감성 푸터 */
+        .footer-note {
+            font-size: 11px;
+            color: #777;
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px dotted #ccc;
+            line-height: 1.5;
+        }
+
+        /* 레트로 버튼 및 공통 컨트롤 */
+        .retro-btn {
+            background: #ece9d8;
+            border: 2px outset #ffffff;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: #000;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .retro-btn:active {
+            border: 2px inset #ffffff;
+        }
+
+        .theme-toggle-btn {
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* ========================================
+           다크모드 스타일 (Dark Mode Theme)
+        ======================================== */
+        body.dark-mode {
+            background-color: #11151c;
+            background-image: 
+                radial-gradient(#1f2633 15%, transparent 16%),
+                radial-gradient(#1f2633 15%, transparent 16%);
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .wrapper {
+            background-color: #1a202c;
+            border-color: #2d3748;
+            box-shadow: 2px 3px 18px rgba(0, 0, 0, 0.7);
+        }
+
+        body.dark-mode .inner-box {
+            background-color: #131722;
+            border-color: #3b4861;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .header {
+            border-bottom-color: #2d3748;
+        }
+
+        body.dark-mode .title-text {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .visitor-count {
+            color: #a0aec0;
+        }
+
+        body.dark-mode .bgm-bar {
+            background: #1e2533;
+            border-color: #38455d;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .bgm-btn, 
+        body.dark-mode .retro-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+            border: 2px outset #4a5568;
+        }
+
+        body.dark-mode .bgm-btn:active, 
+        body.dark-mode .retro-btn:active {
+            border: 2px inset #4a5568;
+        }
+
+        body.dark-mode .marquee-bar {
+            background-color: #241c10;
+            border-color: #5c4520;
+            color: #f6ad55;
+        }
+
+        body.dark-mode .left-profile, 
+        body.dark-mode .main-content {
+            background: #171c26;
+            border-color: #2d3748;
+        }
+
+        body.dark-mode .today-is {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .photo-frame {
+            background: #1e2433;
+            border-color: #344158;
+        }
+
+        body.dark-mode .photo-caption {
+            color: #a0aec0;
+        }
+
+        body.dark-mode .buddy-bubble {
+            background: #291e13;
+            border-color: #573e20;
+            color: #fbd38d;
+        }
+
+        body.dark-mode .profile-status {
+            background: #1e2433;
+            border-color: #344158;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .wave-select {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .section-header {
+            background: #1f2737;
+            border-left-color: #4299e1;
+            color: #63b3ed;
+        }
+
+        body.dark-mode .intro-desc {
+            background: #1a202c;
+            border-color: #2d3748;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .step-card {
+            background: #171c26;
+            border-color: #2d3748;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .step-card:hover {
+            border-color: #4299e1;
+            box-shadow: 0 4px 12px rgba(66, 153, 225, 0.25);
+        }
+
+        body.dark-mode .step-card.highlight {
+            border-color: #ed8936;
+            background: #1d1c24;
+        }
+
+        body.dark-mode .step-card.highlight:hover {
+            border-color: #f6ad55;
+            box-shadow: 0 4px 12px rgba(237, 137, 54, 0.25);
+        }
+
+        body.dark-mode .step-title {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .step-card.highlight .step-title {
+            color: #f6ad55;
+        }
+
+        body.dark-mode .step-desc {
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .file-name-tag {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #90cdf4;
+        }
+
+        body.dark-mode .tag-pill {
+            background: #1e2636;
+            border-color: #34435b;
+            color: #90cdf4;
+        }
+
+        body.dark-mode .step-actions {
+            border-top-color: #2d3748;
+        }
+
+        body.dark-mode .btn-outline {
+            background: #242c3d;
+            border-color: #4a5568;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .btn-outline:hover {
+            background: #2d3748;
+        }
+
+        body.dark-mode .comparison-section {
+            background: #1a202c;
+            border-color: #2d3748;
+        }
+
+        body.dark-mode .comparison-title {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .comp-table th {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #63b3ed;
+        }
+
+        body.dark-mode .comp-table td {
+            background: #171c26;
+            border-color: #2d3748;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .comp-table tr.active-row td {
+            background: #21202b;
+            color: #fbd38d;
+        }
+
+        body.dark-mode .footer-note {
+            border-top-color: #2d3748;
+            color: #718096;
+        }
+
+        /* ========================================
+           모바일 반응형 최적화 (Mobile Optimization)
+        ======================================== */
+        @media (max-width: 720px) {
+            body {
+                padding: 10px 6px;
+            }
+
+            .wrapper {
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            .inner-box {
+                padding: 12px;
+                border-radius: 6px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .header-left {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .content-layout {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .left-profile {
+                padding: 12px;
+            }
+
+            .photo-frame {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+
+            .step-card {
+                padding: 12px;
+            }
+
+            .step-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-link {
+                width: 100%;
+                padding: 12px 14px;
+                font-size: 13px;
+                min-height: 44px; /* 터치 친화적 높이 */
+            }
+
+            .btn-outline {
+                font-size: 12px;
+                padding: 10px 14px;
+            }
+
+            .step-card-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-text {
+                font-size: 13px;
+            }
+            .step-title {
+                font-size: 13px;
+            }
+            .step-desc {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="inner-box">
+        <!-- 상단 헤더 -->
+        <div class="header">
+            <div class="header-left">
+                <div class="visitor-count">
+                    TODAY <span class="today">777</span> | TOTAL 1004
+                </div>
+                <div class="title-text">
+                    ★☆..[재윤]e의 소개 프로젝트 목차..☆★
+                </div>
+            </div>
+
+            <div class="header-right">
+                <!-- 다크모드 전환 버튼 -->
+                <button id="themeToggleBtn" class="retro-btn theme-toggle-btn" aria-label="테마 전환">
+                    <span id="themeIcon">🌙</span> <span id="themeText">다크모드</span>
+                </button>
+
+                <!-- BGM 제어 바 -->
+                <div class="bgm-bar">
+                    <span id="bgmStatus">[재생중 ▶]</span>
+                    <strong>프리스타일 - Y</strong>
+                    <button id="bgmToggleBtn" class="bgm-btn">■ 음악 중지</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 흘러가는 전광판 (싸이월드 감성) -->
+        <div class="marquee-bar">
+            <div class="marquee-inner">
+                ✦ [목차 안내] 강재윤의 소개 페이지 프로젝트에 오신 것을 환영합니다! ✦ 1단계 기본 HTML부터 3단계 인터랙티브 JS까지 아래 버튼을 눌러 이동해보세요 ✦ 모바일 화면 터치 완벽 지원 ✦ 다크모드 & BGM 지원 ✦ 퍼가요~♡ ✦
+            </div>
+        </div>
+
+        <!-- 본문 2단 레이아웃 (모바일에서는 1단 세로 스택) -->
+        <div class="content-layout">
+            <!-- 좌측 프로필 영역 -->
+            <aside class="left-profile">
+                <div class="today-is">
+                    TODAY IS ... <span>목차 탐험 ★★★★★</span>
+                </div>
+
+                <!-- 사진 (스티커 사진 느낌) -->
+                <div class="photo-frame">
+                    <img src="C:/Users/jykan/.gemini/antigravity/brain/eb4cfa31-53f5-4d1b-a20f-e626d3af38e8/.user_uploaded/media_1791975146362_489cbffe.jpg" alt="강재윤의 프로필 사진" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\' viewBox=\'0 0 200 200\'><rect fill=\'%23c0d8f0\' width=\'200\' height=\'200\'/><text fill=\'%2310599a\' font-family=\'sans-serif\' font-size=\'16\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\'>★ 강재윤 ★</text></svg>';">
+                    <div class="photo-caption">#얼짱각도45도 #프로젝트목차 #싸이감성</div>
+                </div>
+
+                <!-- 버디버디 메신저 상태메시지 -->
+                <div class="buddy-bubble">
+                    <span class="buddy-id">[버디] drum_god_jaeyoon</span><br>
+                    "원하는 과제 단계를 클릭하면 바로 이동합니ㄷr...★"
+                </div>
+
+                <div class="profile-status">
+                    <strong>이름 :</strong> 강재윤<br>
+                    <strong>프로젝트 :</strong> 자기소개 웹페이지<br>
+                    <strong>과제 구성 :</strong> 총 3단계 (HTML/CSS/JS)<br>
+                    <strong>안내 :</strong> 아래 버튼 또는 파도타기를 통해 각 파일로 이동하세요! づ_ど
+                </div>
+
+                <!-- 빠른 이동 파도타기 셀렉트 박스 -->
+                <div class="wave-select-box">
+                    <label for="waveSelect" class="wave-select-label">🌊 빠른 파도타기 이동</label>
+                    <select id="waveSelect" class="wave-select">
+                        <option value="">-- 페이지 바로가기 --</option>
+                        <option value="1-html.html">📄 1단계: 1-html.html (HTML)</option>
+                        <option value="2-css.html">🎨 2단계: 2-css.html (CSS)</option>
+                        <option value="3-js.html">⚡ 3단계: 3-js.html (JS 완성본)</option>
+                    </select>
+                </div>
+            </aside>
+
+            <!-- 우측 메인 콘텐츠 (목차 리스트) -->
+            <main class="main-content">
+                <!-- 섹션 타이틀 -->
+                <div class="section-header">
+                    <span>Index :: 소개 페이지 목차 바로가기</span>
+                    <span class="sub">Total 3 Pages</span>
+                </div>
+
+                <div class="intro-desc">
+                    안녕하세요! 웹 개발 과제로 제작된 <strong>강재윤의 단계별 자기소개 페이지 모음</strong>입니다.<br>
+                    각 단계별 버튼을 클릭하여 순수 HTML 뼈대부터 완성형 인터랙티브 미니홈피까지 감상해보세요.
+                </div>
+
+                <!-- 목차 카드 목록 -->
+                <div class="step-list">
+                    <!-- 1단계: HTML -->
+                    <article class="step-card">
+                        <div class="step-card-top">
+                            <div class="step-badge-wrap">
+                                <span class="step-badge">STEP 01</span>
+                                <span class="file-name-tag">1-html.html</span>
+                            </div>
+                            <span class="step-status-tag">✔ 뼈대 구성 완료</span>
+                        </div>
+
+                        <div class="step-title">
+                            <span>📄 1단계: 순수 HTML 기본 소개 페이지</span>
+                        </div>
+
+                        <p class="step-desc">
+                            스타일 시트 없이 웹 표준 기본 태그(h1, img, ul, li 등)만으로 자기소개, 프로필 사진, 좋아하는 것 3가지, 친구들에게 한마디를 충실하게 구조화한 첫 번째 단계 페이지입니다.
+                        </p>
+
+                        <div class="step-tags">
+                            <span class="tag-pill">#순수HTML</span>
+                            <span class="tag-pill">#웹표준기본구조</span>
+                            <span class="tag-pill">#프로필사진</span>
+                            <span class="tag-pill">#리스트목록</span>
+                        </div>
+
+                        <div class="step-actions">
+                            <a href="1-html.html" class="btn-link btn-primary">
+                                <span>🚀 1-html.html 열기</span>
+                            </a>
+                            <a href="1-html.html" target="_blank" rel="noopener noreferrer" class="btn-link btn-outline">
+                                <span>새 창으로 열기 ↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 2단계: CSS -->
+                    <article class="step-card">
+                        <div class="step-card-top">
+                            <div class="step-badge-wrap">
+                                <span class="step-badge">STEP 02</span>
+                                <span class="file-name-tag">2-css.html</span>
+                            </div>
+                            <span class="step-status-tag">✔ 스타일링 완료</span>
+                        </div>
+
+                        <div class="step-title">
+                            <span>🎨 2단계: 싸이월드 감성 CSS 미니홈피</span>
+                        </div>
+
+                        <p class="step-desc">
+                            2000년대 감성의 싸이월드 미니홈피와 버디버디 메신저 스타일을 CSS로 구현했습니다. 하늘색 도트 배경 패턴, 이중 박스 레이아웃, 스티커 사진 프레임, 다이어리 감성 디자인이 적용되었습니다.
+                        </p>
+
+                        <div class="step-tags">
+                            <span class="tag-pill">#CSS3스타일링</span>
+                            <span class="tag-pill">#싸이월드도트스킨</span>
+                            <span class="tag-pill">#버디버디말풍선</span>
+                            <span class="tag-pill">#2단그리드레이아웃</span>
+                        </div>
+
+                        <div class="step-actions">
+                            <a href="2-css.html" class="btn-link btn-primary">
+                                <span>🎨 2-css.html 열기</span>
+                            </a>
+                            <a href="2-css.html" target="_blank" rel="noopener noreferrer" class="btn-link btn-outline">
+                                <span>새 창으로 열기 ↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 3단계: JS (최종본) -->
+                    <article class="step-card highlight">
+                        <div class="step-card-top">
+                            <div class="step-badge-wrap">
+                                <span class="step-badge highlight">STEP 03 ★ 추천</span>
+                                <span class="file-name-tag">3-js.html</span>
+                            </div>
+                            <span class="step-status-tag" style="color: #ff5500;">★ 최종 완성본</span>
+                        </div>
+
+                        <div class="step-title">
+                            <span>⚡ 3단계: 인터랙티브 동적 미니홈피 (JS)</span>
+                        </div>
+
+                        <p class="step-desc">
+                            JavaScript를 도입하여 완전한 동적 웹을 완성했습니다. 실시간 라이트/다크 테마 토글, Web Audio API를 활용한 8비트 감성 BGM 신디사이저, LocalStorage 기반 방명록 댓글/추천/비추천/답글 시스템이 작동합니다.
+                        </p>
+
+                        <div class="step-tags">
+                            <span class="tag-pill">#JavaScript동적기능</span>
+                            <span class="tag-pill">#실시간다크모드</span>
+                            <span class="tag-pill">#WebAudio_BGM합성</span>
+                            <span class="tag-pill">#방명록_추천_답글</span>
+                            <span class="tag-pill">#LocalStorage영구보존</span>
+                        </div>
+
+                        <div class="step-actions">
+                            <a href="3-js.html" class="btn-link btn-accent">
+                                <span>⚡ 3-js.html (완성본) 열기</span>
+                            </a>
+                            <a href="3-js.html" target="_blank" rel="noopener noreferrer" class="btn-link btn-outline">
+                                <span>새 창으로 열기 ↗</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 단계별 비교 요약 테이블 -->
+                <section class="comparison-section">
+                    <div class="comparison-title">
+                        <span>📊 단계별 발전 과정 한눈에 보기</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="comp-table">
+                            <thead>
+                                <tr>
+                                    <th>단계</th>
+                                    <th>파일명</th>
+                                    <th>주요 기술</th>
+                                    <th>핵심 특징</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1단계</strong></td>
+                                    <td><code>1-html.html</code></td>
+                                    <td>Pure HTML</td>
+                                    <td>기본 텍스트 및 사진 마크업</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2단계</strong></td>
+                                    <td><code>2-css.html</code></td>
+                                    <td>HTML + CSS</td>
+                                    <td>2000년대 미니홈피 도트 스킨 & 레이아웃</td>
+                                </tr>
+                                <tr class="active-row">
+                                    <td><strong>3단계 ★</strong></td>
+                                    <td><code>3-js.html</code></td>
+                                    <td>HTML + CSS + JS</td>
+                                    <td>다크모드, 8bit BGM, 방명록/답글/추천 기능</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <div class="footer-note">
+                    ★☆.. 본 페이지는 모바일과 데스크톱 화면 모두에 최적화되어 있습니다 ..☆★<br>
+                    Created for Jaeyoon's Introduction Web Project ✦ All rights reserved.
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     자바스크립트 기능 (테마, BGM, 내비게이션)
+======================================== -->
+<script>
+    /* ----------------------------------------------------
+       1. 다크모드 전환 기능 (Theme Toggle)
+       - 3-js.html과 동일한 localStorage 키('cyworld_theme') 공유
+    ---------------------------------------------------- */
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    // 저장된 테마 불러오기
+    const savedTheme = localStorage.getItem('cyworld_theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '라이트모드';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+
+        if (isDark) {
+            themeIcon.textContent = '☀️';
+            themeText.textContent = '라이트모드';
+            localStorage.setItem('cyworld_theme', 'dark');
+        } else {
+            themeIcon.textContent = '🌙';
+            themeText.textContent = '다크모드';
+            localStorage.setItem('cyworld_theme', 'light');
+        }
+    });
+
+    /* ----------------------------------------------------
+       2. 빠른 파도타기 셀렉트 내비게이션
+    ---------------------------------------------------- */
+    const waveSelect = document.getElementById('waveSelect');
+    waveSelect.addEventListener('change', (e) => {
+        const targetUrl = e.target.value;
+        if (targetUrl) {
+            window.location.href = targetUrl;
+        }
+    });
+
+    /* ----------------------------------------------------
+       3. 배경음악(BGM) 제어 기능 (Web Audio API Synthesizer)
+       - 3-js.html과 동일한 오르골 멜로디 재생
+    ---------------------------------------------------- */
+    const bgmToggleBtn = document.getElementById('bgmToggleBtn');
+    const bgmStatus = document.getElementById('bgmStatus');
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyTimer = null;
+    let masterGain = null;
+
+    // 프리스타일 Y 감성의 서정적인 멜로디 음계 (Hz)
+    const noteFreqs = {
+        'C#4': 277.18, 'D#4': 311.13, 'E4': 329.63, 'F#4': 369.99,
+        'G#4': 415.30, 'A4': 440.00, 'B4': 493.88, 'C#5': 554.37,
+        'D#5': 622.25, 'E5': 659.25
+    };
+
+    // 멜로디 시퀀스 (음계와 박자)
+    const melodyTrack = [
+        { note: 'E4', dur: 0.35 }, { note: 'G#4', dur: 0.35 }, { note: 'B4', dur: 0.4 }, { note: 'E5', dur: 0.7 },
+        { note: 'D#5', dur: 0.4 }, { note: 'C#5', dur: 0.4 }, { note: 'B4', dur: 0.6 },
+        { note: 'G#4', dur: 0.35 }, { note: 'A4', dur: 0.35 }, { note: 'C#5', dur: 0.4 }, { note: 'E5', dur: 0.7 },
+        { note: 'B4', dur: 0.8 }
+    ];
+
+    let currentNoteIndex = 0;
+
+    function initAudio() {
+        if (!audioCtx) {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContextClass();
+            masterGain = audioCtx.createGain();
+            masterGain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            masterGain.connect(audioCtx.destination);
+        }
+    }
+
+    function playSynthNote(freq, duration) {
+        if (!audioCtx || !isPlaying) return;
+
+        const osc = audioCtx.createOscillator();
+        const noteGain = audioCtx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        const now = audioCtx.currentTime;
+        noteGain.gain.setValueAtTime(0.001, now);
+        noteGain.gain.linearRampToValueAtTime(0.15, now + 0.05);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        osc.connect(noteGain);
+        noteGain.connect(masterGain);
+
+        osc.start(now);
+        osc.stop(now + duration);
+    }
+
+    function stepMelody() {
+        if (!isPlaying) return;
+
+        const step = melodyTrack[currentNoteIndex];
+        if (step && noteFreqs[step.note]) {
+            playSynthNote(noteFreqs[step.note], step.dur);
+        }
+
+        currentNoteIndex = (currentNoteIndex + 1) % melodyTrack.length;
+        melodyTimer = setTimeout(stepMelody, (step.dur * 1000) + 80);
+    }
+
+    function startMusic() {
+        initAudio();
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        isPlaying = true;
+        bgmStatus.textContent = '[재생중 ▶]';
+        bgmToggleBtn.textContent = '■ 음악 중지';
+        currentNoteIndex = 0;
+        stepMelody();
+    }
+
+    function stopMusic() {
+        isPlaying = false;
+        if (melodyTimer) {
+            clearTimeout(melodyTimer);
+            melodyTimer = null;
+        }
+        bgmStatus.textContent = '[정지됨 ⏹]';
+        bgmToggleBtn.textContent = '▶ 음악 재생';
+    }
+
+    bgmToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isPlaying) {
+            stopMusic();
+        } else {
+            startMusic();
+        }
+    });
+
+    // 브라우저 자동재생 정책에 맞춰 첫 클릭 시 BGM 자동 재생
+    let userInteracted = false;
+    function autoStartOnFirstTouch() {
+        if (!userInteracted && !isPlaying) {
+            userInteracted = true;
+            startMusic();
+        }
+        window.removeEventListener('click', autoStartOnFirstTouch);
+        window.removeEventListener('touchstart', autoStartOnFirstTouch);
+        window.removeEventListener('keydown', autoStartOnFirstTouch);
+    }
+    window.addEventListener('click', autoStartOnFirstTouch);
+    window.addEventListener('touchstart', autoStartOnFirstTouch, { passive: true });
+    window.addEventListener('keydown', autoStartOnFirstTouch);
+</script>
+
+</body>
+</html>

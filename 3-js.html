@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>★☆..[재윤]e의 미니홈피..☆★</title>
+    <style>
+        /* 기본 리셋 및 전역 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* 라이트 모드 (기본 싸이월드 블루 도트 스킨) */
+            background-color: #7ba3cd;
+            background-image: 
+                radial-gradient(#6891bc 15%, transparent 16%),
+                radial-gradient(#6891bc 15%, transparent 16%);
+            background-size: 16px 16px;
+            background-position: 0 0, 8px 8px;
+            font-family: 'Gulim', '굴림', 'Dotum', '돋움', AppleSDGothic, sans-serif;
+            font-size: 12px;
+            color: #333333;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 겉 프레임 */
+        .wrapper {
+            width: 100%;
+            max-width: 840px;
+            background-color: #b3d1ee;
+            border: 1px solid #739ec5;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 2px 3px 14px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        /* 내부 점선 흰색 바탕 */
+        .inner-box {
+            background-color: #ffffff;
+            border: 2px dashed #4e86b8;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* 상단 헤더 (방문자수 & 다크모드 버튼 & BGM 플레이어) */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 12px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .visitor-count {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .visitor-count .today {
+            color: #ff3b00;
+            font-weight: bold;
+        }
+
+        .title-text {
+            font-size: 15px;
+            font-weight: bold;
+            color: #10599a;
+            text-decoration: underline;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .bgm-bar {
+            background: #f0f0f0;
+            border: 1px solid #cccccc;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #444;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bgm-btn {
+            background: #e4e4e4;
+            border: 1px outset #fff;
+            padding: 2px 6px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .bgm-btn:active {
+            border: 1px inset #999;
+        }
+
+        /* 전광판 배너 (marquee 효과) */
+        .marquee-bar {
+            background-color: #fff9d7;
+            border: 1px dotted #e2b740;
+            padding: 5px 10px;
+            margin-bottom: 14px;
+            font-size: 11px;
+            color: #b16c00;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-inner {
+            display: inline-block;
+            animation: scroll-left 14s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 본문 2단 레이아웃 */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 15px;
+        }
+
+        /* 좌측 프로필 영역 */
+        .left-profile {
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            padding: 12px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .today-is {
+            background: #fff;
+            border: 1px solid #d0d0d0;
+            padding: 4px;
+            font-size: 11px;
+            color: #555;
+            border-radius: 4px;
+        }
+
+        .today-is span {
+            color: #ff5500;
+            font-weight: bold;
+        }
+
+        /* 사진 박스 (스티커 사진 느낌) */
+        .photo-frame {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 6px;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #eeeeee;
+        }
+
+        .photo-caption {
+            font-size: 11px;
+            color: #888888;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .profile-status {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #555555;
+            background: #ffffff;
+            border: 1px dashed #dcdcdc;
+            padding: 8px;
+            text-align: left;
+            word-break: break-all;
+        }
+
+        .buddy-bubble {
+            background: #fff5e6;
+            border: 1px solid #ffcc88;
+            border-radius: 5px;
+            padding: 6px;
+            font-size: 11px;
+            color: #995500;
+            text-align: left;
+        }
+
+        .buddy-id {
+            font-weight: bold;
+            color: #ff6600;
+        }
+
+        /* 우측 메인 콘텐츠 */
+        .main-content {
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            padding: 15px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f4f7fb;
+            border-left: 4px solid #2878b5;
+            padding: 5px 10px;
+            font-weight: bold;
+            color: #2878b5;
+            font-size: 13px;
+        }
+
+        .section-header .sub {
+            font-size: 11px;
+            color: #888;
+            font-weight: normal;
+        }
+
+        /* 좋아하는 것 3가지 목록 */
+        .like-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0;
+        }
+
+        .like-item {
+            background: #fbfbfb;
+            border: 1px dotted #ccc;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .like-badge {
+            background: #ff7733;
+            color: #ffffff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .like-text strong {
+            color: #10599a;
+        }
+
+        /* 친구들에게 한마디 (다이어리 감성) */
+        .message-box {
+            background: #fffdf5;
+            border: 1px solid #f1e4c3;
+            padding: 12px;
+            border-radius: 5px;
+            line-height: 1.8;
+            font-size: 12px;
+        }
+
+        .message-box .date {
+            font-size: 10px;
+            color: #999;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .message-box .cy-font {
+            color: #333;
+        }
+
+        /* ========================================
+           방명록 섹션 (Guestbook with Reply & Vote)
+        ======================================== */
+        .guestbook-section {
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .guestbook-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #ff5500;
+            margin-bottom: 10px;
+            font-size: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dotted #ffaa88;
+        }
+
+        .guestbook-form {
+            background: #ffffff;
+            border: 1px solid #d4d4d4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-inputs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .guest-input {
+            padding: 6px 8px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 11px;
+            outline: none;
+        }
+
+        .guest-input:focus {
+            border-color: #2878b5;
+        }
+
+        #guestNameInput {
+            width: 110px;
+        }
+
+        #guestMsgInput {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .guestbook-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        /* 방명록 메인 카드 */
+        .guest-card {
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guest-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+        }
+
+        .guest-card-user {
+            color: #10599a;
+            font-weight: bold;
+        }
+
+        .guest-card-date {
+            color: #888888;
+            font-size: 10px;
+        }
+
+        .guest-card-text {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #333333;
+            word-break: break-all;
+            padding: 2px 0;
+        }
+
+        /* 추천 / 비추천 / 답글 액션 바 */
+        .guest-card-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+            padding-top: 6px;
+            border-top: 1px dashed #e8e8e8;
+        }
+
+        .action-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn {
+            background: #f4f4f4;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            padding: 2px 7px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #444;
+            transition: all 0.15s ease;
+        }
+
+        .action-btn:hover {
+            background: #eaeaea;
+        }
+
+        .action-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-like:hover {
+            color: #d9381e;
+            border-color: #ff9988;
+            background: #fff0ed;
+        }
+
+        .btn-dislike:hover {
+            color: #2b6cb0;
+            border-color: #90cdf4;
+            background: #ebf8ff;
+        }
+
+        .btn-reply {
+            color: #2878b5;
+        }
+
+        .guest-del-btn {
+            background: none;
+            border: none;
+            color: #aa3333;
+            cursor: pointer;
+            font-size: 10px;
+            text-decoration: underline;
+        }
+
+        /* 답글 목록 영역 */
+        .replies-container {
+            margin-top: 6px;
+            padding-left: 12px;
+            border-left: 2px solid #ffaa77;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: #fafafc;
+            padding: 8px 10px 8px 12px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .reply-item {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            border-bottom: 1px dotted #e4e4e4;
+            padding-bottom: 4px;
+        }
+
+        .reply-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .reply-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reply-item-user {
+            color: #ff5500;
+            font-weight: bold;
+        }
+
+        .reply-item-date {
+            color: #999;
+            font-size: 9px;
+        }
+
+        .reply-item-text {
+            color: #333;
+            word-break: break-all;
+        }
+
+        /* 답글 작성 폼 (토글) */
+        .reply-form {
+            display: none;
+            margin-top: 8px;
+            background: #f1f5f9;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .reply-form.active {
+            display: flex;
+        }
+
+        .reply-input-name {
+            width: 90px;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            font-size: 10px;
+            border-radius: 3px;
+        }
+
+        .reply-input-msg {
+            flex: 1;
+            min-width: 140px;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            font-size: 10px;
+            border-radius: 3px;
+        }
+
+        /* 레트로 버튼 및 공통 컨트롤 */
+        .retro-btn {
+            background: #ece9d8;
+            border: 2px outset #ffffff;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: #000;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .retro-btn:active {
+            border: 2px inset #ffffff;
+        }
+
+        .theme-toggle-btn {
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .wave-select {
+            padding: 3px 5px;
+            font-size: 11px;
+            border: 1px solid #aaa;
+            font-family: inherit;
+        }
+
+        /* ========================================
+           다크모드 스타일 (Dark Mode Theme)
+        ======================================== */
+        body.dark-mode {
+            background-color: #11151c;
+            background-image: 
+                radial-gradient(#1f2633 15%, transparent 16%),
+                radial-gradient(#1f2633 15%, transparent 16%);
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .wrapper {
+            background-color: #1a202c;
+            border-color: #2d3748;
+            box-shadow: 2px 3px 18px rgba(0, 0, 0, 0.7);
+        }
+
+        body.dark-mode .inner-box {
+            background-color: #131722;
+            border-color: #3b4861;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .header {
+            border-bottom-color: #2d3748;
+        }
+
+        body.dark-mode .title-text {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .visitor-count {
+            color: #a0aec0;
+        }
+
+        body.dark-mode .bgm-bar {
+            background: #1e2533;
+            border-color: #38455d;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .bgm-btn, 
+        body.dark-mode .retro-btn {
+            background: #2d3748;
+            color: #e2e8f0;
+            border: 2px outset #4a5568;
+        }
+
+        body.dark-mode .bgm-btn:active, 
+        body.dark-mode .retro-btn:active {
+            border: 2px inset #4a5568;
+        }
+
+        body.dark-mode .marquee-bar {
+            background-color: #241c10;
+            border-color: #5c4520;
+            color: #f6ad55;
+        }
+
+        body.dark-mode .left-profile, 
+        body.dark-mode .main-content {
+            background: #171c26;
+            border-color: #2d3748;
+        }
+
+        body.dark-mode .today-is {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .photo-frame {
+            background: #1e2433;
+            border-color: #344158;
+        }
+
+        body.dark-mode .photo-caption {
+            color: #a0aec0;
+        }
+
+        body.dark-mode .buddy-bubble {
+            background: #291e13;
+            border-color: #573e20;
+            color: #fbd38d;
+        }
+
+        body.dark-mode .profile-status {
+            background: #1e2433;
+            border-color: #344158;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .section-header {
+            background: #1f2737;
+            border-left-color: #4299e1;
+            color: #63b3ed;
+        }
+
+        body.dark-mode .like-item {
+            background: #1a212e;
+            border-color: #344158;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .like-text strong {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .message-box {
+            background: #242018;
+            border-color: #4f412c;
+        }
+
+        body.dark-mode .message-box .cy-font {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .guestbook-section {
+            background: #1a202c;
+            border-color: #2d3748;
+        }
+
+        body.dark-mode .guestbook-form,
+        body.dark-mode .guest-card {
+            background: #131722;
+            border-color: #3b4861;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .guest-card-text {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .guest-card-actions {
+            border-top-color: #2a3447;
+        }
+
+        body.dark-mode .action-btn {
+            background: #1e2636;
+            border-color: #38465f;
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .action-btn:hover {
+            background: #263146;
+        }
+
+        body.dark-mode .btn-like:hover {
+            color: #ff8b7b;
+            border-color: #ff6b5b;
+            background: #331f24;
+        }
+
+        body.dark-mode .btn-dislike:hover {
+            color: #90cdf4;
+            border-color: #63b3ed;
+            background: #1c2738;
+        }
+
+        body.dark-mode .replies-container {
+            background: #18202d;
+            border-left-color: #4299e1;
+        }
+
+        body.dark-mode .reply-item {
+            border-bottom-color: #273347;
+        }
+
+        body.dark-mode .reply-item-user {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .reply-item-text {
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .reply-form {
+            background: #18202d;
+            border-color: #2d3a50;
+        }
+
+        body.dark-mode .guest-input,
+        body.dark-mode .reply-input-name,
+        body.dark-mode .reply-input-msg {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #ffffff;
+        }
+
+        body.dark-mode .guest-card-user {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .wave-select {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #e2e8f0;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 680px) {
+            body {
+                padding: 10px 5px;
+            }
+
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-frame img {
+                max-width: 260px;
+                margin: 0 auto;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .form-inputs {
+                flex-direction: column;
+            }
+
+            #guestNameInput, #guestMsgInput {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="inner-box">
+        <!-- 상단 헤더 -->
+        <div class="header">
+            <div class="header-left">
+                <div class="visitor-count">
+                    TODAY <span class="today">486</span> | TOTAL 99999
+                </div>
+                <div class="title-text">
+                    ★☆..[재윤]e의 행복한 미니홈피..☆★
+                </div>
+            </div>
+
+            <div class="header-right">
+                <!-- 다크모드 전환 버튼 -->
+                <button id="themeToggleBtn" class="retro-btn theme-toggle-btn">
+                    <span id="themeIcon">🌙</span> <span id="themeText">다크모드</span>
+                </button>
+
+                <!-- BGM 제어 바 -->
+                <div class="bgm-bar">
+                    <span id="bgmStatus">[재생중 ▶]</span>
+                    <strong>프리스타일 - Y</strong>
+                    <button id="bgmToggleBtn" class="bgm-btn">■ 음악 중지</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 흘러가는 전광판 (싸이월드/버디 감성) -->
+        <div class="marquee-bar">
+            <div class="marquee-inner">
+                ✦ 2000년대 감성 충전 완료! ✦ 방명록에 발도장 꾹! 추천 & 답글 달아주세요 ✦ 음악 중지를 누르면 BGM이 꺼집니다 ✦ 다크모드 지원! ✦ 락앤롤 베이비 🥁 ✦
+            </div>
+        </div>
+
+        <!-- 본문 2단 레이아웃 -->
+        <div class="content-layout">
+            <!-- 좌측 프로필 영역 -->
+            <div class="left-profile">
+                <div class="today-is">
+                    TODAY IS ... <span>행복 ★★★★★</span>
+                </div>
+
+                <!-- 사진 (스티커 사진 / 미니룸 느낌) -->
+                <div class="photo-frame">
+                    <img src="C:/Users/jykan/.gemini/antigravity/brain/eb4cfa31-53f5-4d1b-a20f-e626d3af38e8/.user_uploaded/media_1791975146362_489cbffe.jpg" alt="강재윤의 프로필 사진">
+                    <div class="photo-caption">#얼짱각도45도 #싸이감성 #우정샷</div>
+                </div>
+
+                <!-- 버디버디 메신저 상태메시지 -->
+                <div class="buddy-bubble">
+                    <span class="buddy-id">[버디] drum_god_jaeyoon</span><br>
+                    "ㄴr는 ㄱr끔... 리듬을 탄ㄷr...★"
+                </div>
+
+                <div class="profile-status">
+                    <strong>이름 :</strong> 강재윤<br>
+                    <strong>성별 :</strong> 멋쟁이<br>
+                    <strong>일촌수 :</strong> 1,004명<br>
+                    <strong>소개 :</strong> 친구들아 반가워! 방명록에 발도장 꾹 찍고 가줘~ づ_ど
+                </div>
+
+                <div>
+                    <select class="wave-select">
+                        <option>파도타기 🌊</option>
+                        <option>싸이월드 베스트</option>
+                        <option>버디버디 친구목록</option>
+                        <option>일촌 홈피 가기</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 우측 메인 콘텐츠 영역 -->
+            <div class="main-content">
+                <!-- 이름 섹션 -->
+                <div class="section-header">
+                    <span>Profile :: 나를 소개합니다</span>
+                    <span class="sub">Updated 2026.10.14</span>
+                </div>
+                <p style="font-size: 13px; line-height: 1.6;">
+                    안녕하세요! 제 이름은 <strong>강재윤</strong>입니다.<br>
+                    제 미니홈피에 찾아와 주신 모든 분들 환영해요! (づ￣ ³￣)づ~♡
+                </p>
+
+                <!-- 좋아하는 것 3가지 -->
+                <div class="section-header">
+                    <span>Favorite :: 내가 좋아하는 3가지</span>
+                    <span class="sub">스크랩 허용</span>
+                </div>
+                <ul class="like-list">
+                    <li class="like-item">
+                        <span class="like-badge">01</span>
+                        <div class="like-text">
+                            <strong>게임 (Game)</strong> - 친구들과 함께 즐기는 신작 & 추억의 명작 게임! 🎮
+                        </div>
+                    </li>
+                    <li class="like-item">
+                        <span class="like-badge">02</span>
+                        <div class="like-text">
+                            <strong>드럼 (Drum)</strong> - 심장을 울리는 파워 비트! 리듬에 미쳐 살아갑니다 🥁
+                        </div>
+                    </li>
+                    <li class="like-item">
+                        <span class="like-badge">03</span>
+                        <div class="like-text">
+                            <strong>음악 감상 (Music)</strong> - 싸이월드 BGM 감성 명곡 들으며 힐링하기 🎧
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- 친구들에게 한마디 (다이어리 감성) -->
+                <div class="section-header">
+                    <span>Diary :: 친구들에게 보내는 편지</span>
+                    <span class="sub">2026.10.14 맑음 ☀️</span>
+                </div>
+                <div class="message-box">
+                    <span class="date">2026.10.14 19:30 | 공개설정: 전체공개</span>
+                    <div class="cy-font">
+                        앞으로 재미있게 잘 지내보자!<br>
+                        같이 피씨방 가서 게임할 친구, 음악 얘기할 친구 언제든 환영이야.<br>
+                        글 보고 그냥 가지 말고 밑에 <strong>방명록</strong>에 이름이랑 한마디 꼭 남겨줘~! 퍼가요~♡
+                    </div>
+                </div>
+
+                <!-- 방명록 섹션 (Guestbook with Reply & Vote) -->
+                <div class="guestbook-section">
+                    <div class="guestbook-title">
+                        <span>📖 방명록 (Guestbook)</span>
+                        <span id="guestCount" style="font-size: 10px; color: #888;">총 3개</span>
+                    </div>
+
+                    <!-- 방명록 작성 폼 -->
+                    <form id="guestbookForm" class="guestbook-form">
+                        <div class="form-inputs">
+                            <input type="text" id="guestNameInput" class="guest-input" placeholder="이름 (예: 김일촌)" maxlength="12" required>
+                            <input type="text" id="guestMsgInput" class="guest-input" placeholder="남길 말을 적어주세요 (예: 퍼가요~♡)" maxlength="80" required>
+                            <button type="submit" class="retro-btn" style="font-weight: bold; background: #ff7733; color: #fff; border-color: #ffaa77;">등록 ✍️</button>
+                        </div>
+                    </form>
+
+                    <!-- 방명록 목록 -->
+                    <div id="guestbookList" class="guestbook-list">
+                        <!-- JavaScript를 통해 동적으로 렌더링됩니다 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================
+     자바스크립트 (JavaScript 기능 구현)
+======================================== -->
+<script>
+    /* ----------------------------------------------------
+       1. 다크모드 전환 기능 (Theme Toggle)
+    ---------------------------------------------------- */
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    // 저장된 테마 불러오기
+    const savedTheme = localStorage.getItem('cyworld_theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '라이트모드';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+
+        if (isDark) {
+            themeIcon.textContent = '☀️';
+            themeText.textContent = '라이트모드';
+            localStorage.setItem('cyworld_theme', 'dark');
+        } else {
+            themeIcon.textContent = '🌙';
+            themeText.textContent = '다크모드';
+            localStorage.setItem('cyworld_theme', 'light');
+        }
+    });
+
+    /* ----------------------------------------------------
+       2. 배경음악(BGM) 제어 기능 (Web Audio API Synthesizer)
+       - 외부 파일 없이 브라우저 자체 음원으로 감성 멜로디 연주
+       - '음악 중지' 버튼 클릭 시 즉시 음소거 및 정지
+    ---------------------------------------------------- */
+    const bgmToggleBtn = document.getElementById('bgmToggleBtn');
+    const bgmStatus = document.getElementById('bgmStatus');
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyTimer = null;
+    let masterGain = null;
+
+    // 프리스타일 Y 감성의 서정적인 멜로디 음계 (Hz)
+    const noteFreqs = {
+        'C#4': 277.18, 'D#4': 311.13, 'E4': 329.63, 'F#4': 369.99,
+        'G#4': 415.30, 'A4': 440.00, 'B4': 493.88, 'C#5': 554.37,
+        'D#5': 622.25, 'E5': 659.25
+    };
+
+    // 멜로디 시퀀스 (음계와 박자)
+    const melodyTrack = [
+        { note: 'E4', dur: 0.35 }, { note: 'G#4', dur: 0.35 }, { note: 'B4', dur: 0.4 }, { note: 'E5', dur: 0.7 },
+        { note: 'D#5', dur: 0.4 }, { note: 'C#5', dur: 0.4 }, { note: 'B4', dur: 0.6 },
+        { note: 'G#4', dur: 0.35 }, { note: 'A4', dur: 0.35 }, { note: 'C#5', dur: 0.4 }, { note: 'E5', dur: 0.7 },
+        { note: 'B4', dur: 0.8 }
+    ];
+
+    let currentNoteIndex = 0;
+
+    function initAudio() {
+        if (!audioCtx) {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContextClass();
+            masterGain = audioCtx.createGain();
+            masterGain.gain.setValueAtTime(0.12, audioCtx.currentTime); // 포근하고 은은한 볼륨
+            masterGain.connect(audioCtx.destination);
+        }
+    }
+
+    function playSynthNote(freq, duration) {
+        if (!audioCtx || !isPlaying) return;
+
+        const osc = audioCtx.createOscillator();
+        const noteGain = audioCtx.createGain();
+
+        osc.type = 'triangle'; // 오르골 느낌의 부드러운 삼각파
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        const now = audioCtx.currentTime;
+        noteGain.gain.setValueAtTime(0.001, now);
+        noteGain.gain.linearRampToValueAtTime(0.15, now + 0.05);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        osc.connect(noteGain);
+        noteGain.connect(masterGain);
+
+        osc.start(now);
+        osc.stop(now + duration);
+    }
+
+    function stepMelody() {
+        if (!isPlaying) return;
+
+        const step = melodyTrack[currentNoteIndex];
+        if (step && noteFreqs[step.note]) {
+            playSynthNote(noteFreqs[step.note], step.dur);
+        }
+
+        currentNoteIndex = (currentNoteIndex + 1) % melodyTrack.length;
+        melodyTimer = setTimeout(stepMelody, (step.dur * 1000) + 80);
+    }
+
+    function startMusic() {
+        initAudio();
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        isPlaying = true;
+        bgmStatus.textContent = '[재생중 ▶]';
+        bgmToggleBtn.textContent = '■ 음악 중지';
+        currentNoteIndex = 0;
+        stepMelody();
+    }
+
+    function stopMusic() {
+        isPlaying = false;
+        if (melodyTimer) {
+            clearTimeout(melodyTimer);
+            melodyTimer = null;
+        }
+        bgmStatus.textContent = '[정지됨 ⏹]';
+        bgmToggleBtn.textContent = '▶ 음악 재생';
+    }
+
+    // 음악 중지 / 재생 토글 버튼 이벤트
+    bgmToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isPlaying) {
+            stopMusic();
+        } else {
+            startMusic();
+        }
+    });
+
+    // 브라우저의 자동재생 제한 정책에 따라, 사용자가 페이지를 처음 클릭하면 자동으로 부드럽게 BGM 시작
+    let userInteracted = false;
+    function autoStartOnFirstTouch() {
+        if (!userInteracted && !isPlaying) {
+            userInteracted = true;
+            startMusic();
+        }
+        window.removeEventListener('click', autoStartOnFirstTouch);
+        window.removeEventListener('keydown', autoStartOnFirstTouch);
+    }
+    window.addEventListener('click', autoStartOnFirstTouch);
+    window.addEventListener('keydown', autoStartOnFirstTouch);
+
+    /* ----------------------------------------------------
+       3. 방명록 기능 (Guestbook with Timestamp, Replies & Votes)
+       - 이름, 남길 말, 작성 시간(YYYY.MM.DD HH:mm:ss)
+       - 추천(Like) / 비추천(Dislike) 카운터
+       - 답글(Reply) 작성 및 삭제 기능
+       - LocalStorage 영구 보존
+    ---------------------------------------------------- */
+    const guestbookForm = document.getElementById('guestbookForm');
+    const guestNameInput = document.getElementById('guestNameInput');
+    const guestMsgInput = document.getElementById('guestMsgInput');
+    const guestbookList = document.getElementById('guestbookList');
+    const guestCount = document.getElementById('guestCount');
+
+    // 기본 방명록 데이터 (추천, 비추천, 답글 포함)
+    const initialGuests = [
+        { 
+            id: 1, 
+            name: "김비트", 
+            msg: "야 오늘 드럼 세션 대박이었음 ㅋㅋㅋ 리듬감 미쳤다!", 
+            time: "2026.10.14 19:20:15",
+            likes: 6,
+            dislikes: 0,
+            replies: [
+                { id: 101, name: "강재윤", msg: "고맙다 친구야! 다음 주에 또 합주하자 🥁", time: "2026.10.14 19:22:30" }
+            ]
+        },
+        { 
+            id: 2, 
+            name: "박게임", 
+            msg: "재윤아 오늘 저녁에 랭겜 한판 돌리자 ㄱㄱ 대기타라", 
+            time: "2026.10.14 19:15:42",
+            likes: 4,
+            dislikes: 1,
+            replies: [
+                { id: 201, name: "강재윤", msg: "디코 들어와 있어라 바로 간다 🎮", time: "2026.10.14 19:18:10" }
+            ]
+        },
+        { 
+            id: 3, 
+            name: "일촌친구", 
+            msg: "홈피 너무 이쁘게 잘 꾸몄네! 퍼가요~♡", 
+            time: "2026.10.14 18:50:09",
+            likes: 9,
+            dislikes: 0,
+            replies: []
+        }
+    ];
+
+    // LocalStorage에서 방명록 불러오기
+    function loadGuestbook() {
+        const stored = localStorage.getItem('cyworld_guestbook');
+        if (stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                // 데이터 무결성 보정 (구버전 데이터 호환)
+                return parsed.map(item => ({
+                    ...item,
+                    likes: typeof item.likes === 'number' ? item.likes : 0,
+                    dislikes: typeof item.dislikes === 'number' ? item.dislikes : 0,
+                    replies: Array.isArray(item.replies) ? item.replies : []
+                }));
+            } catch (e) {
+                return initialGuests;
+            }
+        }
+        return initialGuests;
+    }
+
+    // LocalStorage에 방명록 저장
+    function saveGuestbook(list) {
+        localStorage.setItem('cyworld_guestbook', JSON.stringify(list));
+    }
+
+    // 현재 일시 포맷 (YYYY.MM.DD HH:mm:ss)
+    function getCurrentDateTime() {
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const d = String(now.getDate()).padStart(2, '0');
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        return `${y}.${m}.${d} ${hh}:${mm}:${ss}`;
+    }
+
+    // XSS 방지용 HTML Escape 함수
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    // 추천 / 비추천 처리 함수
+    function handleVote(cardId, type) {
+        const list = loadGuestbook();
+        const target = list.find(item => item.id === cardId);
+        if (target) {
+            if (type === 'like') {
+                target.likes = (target.likes || 0) + 1;
+            } else if (type === 'dislike') {
+                target.dislikes = (target.dislikes || 0) + 1;
+            }
+            saveGuestbook(list);
+            renderGuestbook();
+        }
+    }
+
+    // 답글 추가 처리 함수
+    function addReply(cardId, replyName, replyMsg) {
+        if (!replyName.trim()) {
+            alert('답글 작성자 이름을 입력해주세요!');
+            return false;
+        }
+        if (!replyMsg.trim()) {
+            alert('답글 내용을 입력해주세요!');
+            return false;
+        }
+
+        const list = loadGuestbook();
+        const target = list.find(item => item.id === cardId);
+        if (target) {
+            if (!Array.isArray(target.replies)) {
+                target.replies = [];
+            }
+            target.replies.push({
+                id: Date.now(),
+                name: replyName.trim(),
+                msg: replyMsg.trim(),
+                time: getCurrentDateTime()
+            });
+            saveGuestbook(list);
+            renderGuestbook();
+            return true;
+        }
+        return false;
+    }
+
+    // 답글 삭제 처리 함수
+    function deleteReply(cardId, replyId) {
+        if (confirm('이 답글을 삭제할까요?')) {
+            const list = loadGuestbook();
+            const target = list.find(item => item.id === cardId);
+            if (target && Array.isArray(target.replies)) {
+                target.replies = target.replies.filter(r => r.id !== replyId);
+                saveGuestbook(list);
+                renderGuestbook();
+            }
+        }
+    }
+
+    // 방명록 리스트 화면 렌더링
+    function renderGuestbook() {
+        const list = loadGuestbook();
+        guestCount.textContent = `총 ${list.length}개`;
+        guestbookList.innerHTML = '';
+
+        if (list.length === 0) {
+            guestbookList.innerHTML = '<div style="text-align: center; color: #888; padding: 15px;">아직 작성된 방명록이 없습니다. 첫 발도장을 남겨보세요!</div>';
+            return;
+        }
+
+        list.forEach((item) => {
+            const card = document.createElement('div');
+            card.className = 'guest-card';
+            card.dataset.id = item.id;
+
+            const replies = Array.isArray(item.replies) ? item.replies : [];
+            const likes = item.likes || 0;
+            const dislikes = item.dislikes || 0;
+
+            // 답글 목록 HTML 생성
+            let repliesHtml = '';
+            if (replies.length > 0) {
+                const replyItemsHtml = replies.map(r => `
+                    <div class="reply-item">
+                        <div class="reply-item-header">
+                            <div>
+                                <span class="reply-item-user">ㄴ [일촌] ${escapeHtml(r.name)}</span>
+                                <span class="reply-item-date">(${r.time})</span>
+                            </div>
+                            <button class="guest-del-btn delete-reply-btn" data-card-id="${item.id}" data-reply-id="${r.id}" title="답글 삭제">삭제</button>
+                        </div>
+                        <div class="reply-item-text">${escapeHtml(r.msg)}</div>
+                    </div>
+                `).join('');
+
+                repliesHtml = `
+                    <div class="replies-container">
+                        ${replyItemsHtml}
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div class="guest-card-header">
+                    <div>
+                        <span class="guest-card-user">[일촌] ${escapeHtml(item.name)}</span>
+                        <span class="guest-card-date">(${item.time})</span>
+                    </div>
+                    <button class="guest-del-btn delete-card-btn" data-id="${item.id}" title="글 삭제">삭제</button>
+                </div>
+                <div class="guest-card-text">${escapeHtml(item.msg)}</div>
+
+                <!-- 추천 / 비추천 / 답글 액션 바 -->
+                <div class="guest-card-actions">
+                    <div class="action-left">
+                        <button class="action-btn btn-like" data-id="${item.id}">
+                            👍 추천 <strong>${likes}</strong>
+                        </button>
+                        <button class="action-btn btn-dislike" data-id="${item.id}">
+                            👎 비추천 <strong>${dislikes}</strong>
+                        </button>
+                        <button class="action-btn btn-reply toggle-reply-btn" data-id="${item.id}">
+                            💬 답글 (${replies.length})
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 답글 리스트 -->
+                ${repliesHtml}
+
+                <!-- 답글 입력 폼 (토글 영역) -->
+                <form class="reply-form" id="replyForm-${item.id}">
+                    <input type="text" class="reply-input-name" placeholder="답글 작성자" maxlength="10" required>
+                    <input type="text" class="reply-input-msg" placeholder="답글을 남겨주세요~" maxlength="60" required>
+                    <button type="submit" class="retro-btn" style="background:#ff7733; color:#fff; border-color:#ff9966; font-size:10px; padding:2px 8px;">등록</button>
+                </form>
+            `;
+
+            // 1. 추천 버튼 이벤트
+            card.querySelector('.btn-like').addEventListener('click', () => {
+                handleVote(item.id, 'like');
+            });
+
+            // 2. 비추천 버튼 이벤트
+            card.querySelector('.btn-dislike').addEventListener('click', () => {
+                handleVote(item.id, 'dislike');
+            });
+
+            // 3. 답글 쓰기 토글 버튼 이벤트
+            const replyToggleBtn = card.querySelector('.toggle-reply-btn');
+            const replyForm = card.querySelector(`#replyForm-${item.id}`);
+            replyToggleBtn.addEventListener('click', () => {
+                replyForm.classList.toggle('active');
+                if (replyForm.classList.contains('active')) {
+                    replyForm.querySelector('.reply-input-name').focus();
+                }
+            });
+
+            // 4. 답글 폼 서밋 이벤트
+            replyForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameInput = replyForm.querySelector('.reply-input-name');
+                const msgInput = replyForm.querySelector('.reply-input-msg');
+                const success = addReply(item.id, nameInput.value, msgInput.value);
+                if (success) {
+                    nameInput.value = '';
+                    msgInput.value = '';
+                }
+            });
+
+            // 5. 답글 개별 삭제 버튼 이벤트
+            card.querySelectorAll('.delete-reply-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const cId = Number(e.target.dataset.cardId);
+                    const rId = Number(e.target.dataset.replyId);
+                    deleteReply(cId, rId);
+                });
+            });
+
+            // 6. 메인 글 삭제 버튼 이벤트
+            card.querySelector('.delete-card-btn').addEventListener('click', () => {
+                deleteGuestbookItem(item.id);
+            });
+
+            guestbookList.appendChild(card);
+        });
+    }
+
+    // 방명록 등록 이벤트
+    guestbookForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = guestNameInput.value.trim();
+        const msg = guestMsgInput.value.trim();
+
+        if (!name) {
+            alert('이름을 입력해주세요!');
+            guestNameInput.focus();
+            return;
+        }
+
+        if (!msg) {
+            alert('남길 말을 입력해주세요!');
+            guestMsgInput.focus();
+            return;
+        }
+
+        const list = loadGuestbook();
+        const newItem = {
+            id: Date.now(),
+            name: name,
+            msg: msg,
+            time: getCurrentDateTime(),
+            likes: 0,
+            dislikes: 0,
+            replies: []
+        };
+
+        // 최신 글이 맨 위에 오도록 unshift
+        list.unshift(newItem);
+        saveGuestbook(list);
+
+        // 입력 폼 초기화 및 다시 렌더링
+        guestMsgInput.value = '';
+        renderGuestbook();
+    });
+
+    // 방명록 메인 항목 삭제
+    function deleteGuestbookItem(id) {
+        if (confirm('이 방명록 글과 모든 답글을 삭제할까요?')) {
+            let list = loadGuestbook();
+            list = list.filter(item => item.id !== id);
+            saveGuestbook(list);
+            renderGuestbook();
+        }
+    }
+
+    // 초기 렌더링 실행
+    renderGuestbook();
+</script>
+
+</body>
+</html>
