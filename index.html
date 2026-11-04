@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>★☆..[재윤]e의 소개 프로젝트 목차..☆★</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>★☆..[재윤]e의 미니홈피..☆★</title>
     <style>
         /* 기본 리셋 및 전역 폰트 설정 */
         * {
@@ -26,14 +26,13 @@
             padding: 20px 10px;
             display: flex;
             justify-content: center;
-            min-height: 100vh;
             transition: background-color 0.3s ease;
         }
 
         /* 겉 프레임 */
         .wrapper {
             width: 100%;
-            max-width: 860px;
+            max-width: 840px;
             background-color: #b3d1ee;
             border: 1px solid #739ec5;
             border-radius: 12px;
@@ -47,7 +46,7 @@
             background-color: #ffffff;
             border: 2px dashed #4e86b8;
             border-radius: 10px;
-            padding: 16px;
+            padding: 15px;
             transition: all 0.3s ease;
         }
 
@@ -58,7 +57,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 1px solid #e0e0e0;
             margin-bottom: 12px;
         }
@@ -73,7 +72,6 @@
         .visitor-count {
             font-size: 11px;
             color: #666;
-            white-space: nowrap;
         }
 
         .visitor-count .today {
@@ -86,7 +84,6 @@
             font-weight: bold;
             color: #10599a;
             text-decoration: underline;
-            letter-spacing: -0.5px;
         }
 
         .header-right {
@@ -125,18 +122,17 @@
         .marquee-bar {
             background-color: #fff9d7;
             border: 1px dotted #e2b740;
-            padding: 6px 10px;
+            padding: 5px 10px;
             margin-bottom: 14px;
             font-size: 11px;
             color: #b16c00;
             overflow: hidden;
             white-space: nowrap;
-            border-radius: 4px;
         }
 
         .marquee-inner {
             display: inline-block;
-            animation: scroll-left 16s linear infinite;
+            animation: scroll-left 14s linear infinite;
         }
 
         @keyframes scroll-left {
@@ -166,7 +162,7 @@
         .today-is {
             background: #fff;
             border: 1px solid #d0d0d0;
-            padding: 5px;
+            padding: 4px;
             font-size: 11px;
             color: #555;
             border-radius: 4px;
@@ -190,7 +186,6 @@
             height: auto;
             display: block;
             border: 1px solid #eeeeee;
-            border-radius: 2px;
         }
 
         .photo-caption {
@@ -200,56 +195,30 @@
             font-style: italic;
         }
 
+        .profile-status {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #555555;
+            background: #ffffff;
+            border: 1px dashed #dcdcdc;
+            padding: 8px;
+            text-align: left;
+            word-break: break-all;
+        }
+
         .buddy-bubble {
             background: #fff5e6;
             border: 1px solid #ffcc88;
             border-radius: 5px;
-            padding: 8px;
+            padding: 6px;
             font-size: 11px;
             color: #995500;
             text-align: left;
-            line-height: 1.4;
         }
 
         .buddy-id {
             font-weight: bold;
             color: #ff6600;
-        }
-
-        .profile-status {
-            font-size: 11px;
-            line-height: 1.7;
-            color: #555555;
-            background: #ffffff;
-            border: 1px dashed #dcdcdc;
-            padding: 8px 10px;
-            text-align: left;
-            word-break: break-all;
-            border-radius: 4px;
-        }
-
-        .wave-select-box {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            text-align: left;
-        }
-
-        .wave-select-label {
-            font-size: 10px;
-            color: #777;
-            font-weight: bold;
-        }
-
-        .wave-select {
-            width: 100%;
-            padding: 6px 8px;
-            font-size: 11px;
-            border: 1px solid #aaa;
-            font-family: inherit;
-            background-color: #fff;
-            border-radius: 3px;
-            cursor: pointer;
         }
 
         /* 우측 메인 콘텐츠 */
@@ -260,7 +229,7 @@
             background: #ffffff;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .section-header {
@@ -269,11 +238,10 @@
             justify-content: space-between;
             background: #f4f7fb;
             border-left: 4px solid #2878b5;
-            padding: 6px 12px;
+            padding: 5px 10px;
             font-weight: bold;
             color: #2878b5;
             font-size: 13px;
-            border-radius: 0 4px 4px 0;
         }
 
         .section-header .sub {
@@ -282,274 +250,320 @@
             font-weight: normal;
         }
 
-        .intro-desc {
-            font-size: 12px;
-            line-height: 1.6;
-            color: #444;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 10px 12px;
-        }
-
-        /* ========================================
-           목차 카드 리스트 (Step Cards)
-        ======================================== */
-        .step-list {
+        /* 좋아하는 것 3가지 목록 */
+        .like-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 14px;
-        }
-
-        .step-card {
-            background: #ffffff;
-            border: 1px solid #cfd9e8;
-            border-radius: 8px;
-            padding: 14px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-card:hover {
-            border-color: #2878b5;
-            box-shadow: 0 4px 12px rgba(40, 120, 181, 0.15);
-            transform: translateY(-2px);
-        }
-
-        /* 3단계 최종본 강조 스타일 */
-        .step-card.highlight {
-            border: 1.5px solid #ff7733;
-            background: #fffdf9;
-        }
-
-        .step-card.highlight:hover {
-            border-color: #ff5500;
-            box-shadow: 0 4px 12px rgba(255, 119, 51, 0.2);
-        }
-
-        .step-card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
             gap: 8px;
-            flex-wrap: wrap;
+            padding: 0;
         }
 
-        .step-badge-wrap {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .step-badge {
-            background: #2878b5;
-            color: #ffffff;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 2px 7px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-        }
-
-        .step-badge.highlight {
-            background: #ff7733;
-        }
-
-        .file-name-tag {
-            background: #edf2f7;
-            color: #4a5568;
-            font-family: Consolas, monospace;
-            font-size: 11px;
-            padding: 2px 6px;
-            border-radius: 3px;
-            border: 1px solid #cbd5e0;
-        }
-
-        .step-status-tag {
-            font-size: 11px;
-            color: #0d7f3f;
-            font-weight: bold;
-        }
-
-        .step-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #10599a;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .step-card.highlight .step-title {
-            color: #d9381e;
-        }
-
-        .step-desc {
-            font-size: 12px;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .step-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .tag-pill {
-            font-size: 10px;
-            color: #556b82;
-            background: #eef3f9;
-            border: 1px solid #d4e0ed;
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
-
-        /* 카드 하단 액션 버튼 영역 */
-        .step-actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-            padding-top: 6px;
-            border-top: 1px dashed #e2e8f0;
-        }
-
-        /* 레트로 스타일 버튼 */
-        .btn-link {
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-family: inherit;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: all 0.15s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .btn-primary {
-            background: #2878b5;
-            color: #ffffff;
-            border: 2px outset #589bce;
-            box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-        }
-
-        .btn-primary:hover {
-            background: #1f679e;
-        }
-
-        .btn-primary:active {
-            border-style: inset;
-            transform: scale(0.97);
-        }
-
-        .btn-accent {
-            background: #ff7733;
-            color: #ffffff;
-            border: 2px outset #ffaa77;
-            box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-        }
-
-        .btn-accent:hover {
-            background: #e6601f;
-        }
-
-        .btn-accent:active {
-            border-style: inset;
-            transform: scale(0.97);
-        }
-
-        .btn-outline {
-            background: #f0f0f0;
-            color: #444;
-            border: 2px outset #ffffff;
+        .like-item {
+            background: #fbfbfb;
+            border: 1px dotted #ccc;
             padding: 8px 12px;
-            font-size: 11px;
-            font-weight: normal;
+            border-radius: 4px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
         }
 
-        .btn-outline:hover {
-            background: #e4e4e4;
+        .like-badge {
+            background: #ff7733;
+            color: #ffffff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
-        .btn-outline:active {
-            border-style: inset;
+        .like-text strong {
+            color: #10599a;
+        }
+
+        /* 친구들에게 한마디 (다이어리 감성) */
+        .message-box {
+            background: #fffdf5;
+            border: 1px solid #f1e4c3;
+            padding: 12px;
+            border-radius: 5px;
+            line-height: 1.8;
+            font-size: 12px;
+        }
+
+        .message-box .date {
+            font-size: 10px;
+            color: #999;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .message-box .cy-font {
+            color: #333;
         }
 
         /* ========================================
-           진행 단계 비교 요약 표 (Comparison Table)
+           방명록 섹션 (Guestbook with Reply & Vote)
         ======================================== */
-        .comparison-section {
-            background: #fafbfc;
-            border: 1px solid #e1e7ee;
+        .guestbook-section {
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
             border-radius: 6px;
             padding: 12px;
         }
 
-        .comparison-title {
-            font-weight: bold;
-            color: #2878b5;
-            font-size: 12px;
-            margin-bottom: 8px;
+        .guestbook-title {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 5px;
+            font-weight: bold;
+            color: #ff5500;
+            margin-bottom: 10px;
+            font-size: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dotted #ffaa88;
         }
 
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+        .guestbook-form {
+            background: #ffffff;
+            border: 1px solid #d4d4d4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .comp-table {
-            width: 100%;
-            border-collapse: collapse;
+        .form-inputs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .guest-input {
+            padding: 6px 8px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            font-family: inherit;
             font-size: 11px;
-            min-width: 440px;
+            outline: none;
         }
 
-        .comp-table th, .comp-table td {
-            border: 1px solid #d9e2ec;
-            padding: 7px 10px;
-            text-align: left;
+        .guest-input:focus {
+            border-color: #2878b5;
         }
 
-        .comp-table th {
-            background: #ebf1f8;
+        #guestNameInput {
+            width: 110px;
+        }
+
+        #guestMsgInput {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .guestbook-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        /* 방명록 메인 카드 */
+        .guest-card {
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guest-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+        }
+
+        .guest-card-user {
             color: #10599a;
             font-weight: bold;
-            white-space: nowrap;
         }
 
-        .comp-table td {
-            background: #ffffff;
-            color: #444;
+        .guest-card-date {
+            color: #888888;
+            font-size: 10px;
         }
 
-        .comp-table tr.active-row td {
-            background: #fffdf5;
-            font-weight: 500;
-        }
-
-        /* 하단 감성 푸터 */
-        .footer-note {
-            font-size: 11px;
-            color: #777;
-            text-align: center;
-            padding-top: 10px;
-            border-top: 1px dotted #ccc;
+        .guest-card-text {
+            font-size: 12px;
             line-height: 1.5;
+            color: #333333;
+            word-break: break-all;
+            padding: 2px 0;
+        }
+
+        /* 추천 / 비추천 / 답글 액션 바 */
+        .guest-card-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+            padding-top: 6px;
+            border-top: 1px dashed #e8e8e8;
+        }
+
+        .action-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn {
+            background: #f4f4f4;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            padding: 2px 7px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #444;
+            transition: all 0.15s ease;
+        }
+
+        .action-btn:hover {
+            background: #eaeaea;
+        }
+
+        .action-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-like:hover {
+            color: #d9381e;
+            border-color: #ff9988;
+            background: #fff0ed;
+        }
+
+        .btn-dislike:hover {
+            color: #2b6cb0;
+            border-color: #90cdf4;
+            background: #ebf8ff;
+        }
+
+        .btn-reply {
+            color: #2878b5;
+        }
+
+        .guest-del-btn {
+            background: none;
+            border: none;
+            color: #aa3333;
+            cursor: pointer;
+            font-size: 10px;
+            text-decoration: underline;
+        }
+
+        /* 답글 목록 영역 */
+        .replies-container {
+            margin-top: 6px;
+            padding-left: 12px;
+            border-left: 2px solid #ffaa77;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: #fafafc;
+            padding: 8px 10px 8px 12px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .reply-item {
+            font-size: 11px;
+            line-height: 1.5;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            border-bottom: 1px dotted #e4e4e4;
+            padding-bottom: 4px;
+        }
+
+        .reply-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .reply-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reply-item-user {
+            color: #ff5500;
+            font-weight: bold;
+        }
+
+        .reply-item-date {
+            color: #999;
+            font-size: 9px;
+        }
+
+        .reply-item-text {
+            color: #333;
+            word-break: break-all;
+        }
+
+        /* 답글 작성 폼 (토글) */
+        .reply-form {
+            display: none;
+            margin-top: 8px;
+            background: #f1f5f9;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .reply-form.active {
+            display: flex;
+        }
+
+        .reply-input-name {
+            width: 90px;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            font-size: 10px;
+            border-radius: 3px;
+        }
+
+        .reply-input-msg {
+            flex: 1;
+            min-width: 140px;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            font-size: 10px;
+            border-radius: 3px;
         }
 
         /* 레트로 버튼 및 공통 컨트롤 */
@@ -572,6 +586,13 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+        }
+
+        .wave-select {
+            padding: 3px 5px;
+            font-size: 11px;
+            border: 1px solid #aaa;
+            font-family: inherit;
         }
 
         /* ========================================
@@ -666,141 +687,131 @@
             color: #cbd5e0;
         }
 
-        body.dark-mode .wave-select {
-            background: #242c3d;
-            border-color: #3e4b63;
-            color: #e2e8f0;
-        }
-
         body.dark-mode .section-header {
             background: #1f2737;
             border-left-color: #4299e1;
             color: #63b3ed;
         }
 
-        body.dark-mode .intro-desc {
-            background: #1a202c;
-            border-color: #2d3748;
-            color: #cbd5e0;
-        }
-
-        body.dark-mode .step-card {
-            background: #171c26;
-            border-color: #2d3748;
+        body.dark-mode .like-item {
+            background: #1a212e;
+            border-color: #344158;
             color: #e2e8f0;
         }
 
-        body.dark-mode .step-card:hover {
-            border-color: #4299e1;
-            box-shadow: 0 4px 12px rgba(66, 153, 225, 0.25);
-        }
-
-        body.dark-mode .step-card.highlight {
-            border-color: #ed8936;
-            background: #1d1c24;
-        }
-
-        body.dark-mode .step-card.highlight:hover {
-            border-color: #f6ad55;
-            box-shadow: 0 4px 12px rgba(237, 137, 54, 0.25);
-        }
-
-        body.dark-mode .step-title {
+        body.dark-mode .like-text strong {
             color: #63b3ed;
         }
 
-        body.dark-mode .step-card.highlight .step-title {
-            color: #f6ad55;
+        body.dark-mode .message-box {
+            background: #242018;
+            border-color: #4f412c;
         }
 
-        body.dark-mode .step-desc {
-            color: #cbd5e0;
+        body.dark-mode .message-box .cy-font {
+            color: #e2e8f0;
         }
 
-        body.dark-mode .file-name-tag {
-            background: #242c3d;
-            border-color: #3e4b63;
-            color: #90cdf4;
+        body.dark-mode .guestbook-section {
+            background: #1a202c;
+            border-color: #2d3748;
         }
 
-        body.dark-mode .tag-pill {
+        body.dark-mode .guestbook-form,
+        body.dark-mode .guest-card {
+            background: #131722;
+            border-color: #3b4861;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .guest-card-text {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .guest-card-actions {
+            border-top-color: #2a3447;
+        }
+
+        body.dark-mode .action-btn {
             background: #1e2636;
-            border-color: #34435b;
-            color: #90cdf4;
-        }
-
-        body.dark-mode .step-actions {
-            border-top-color: #2d3748;
-        }
-
-        body.dark-mode .btn-outline {
-            background: #242c3d;
-            border-color: #4a5568;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .btn-outline:hover {
-            background: #2d3748;
-        }
-
-        body.dark-mode .comparison-section {
-            background: #1a202c;
-            border-color: #2d3748;
-        }
-
-        body.dark-mode .comparison-title {
-            color: #63b3ed;
-        }
-
-        body.dark-mode .comp-table th {
-            background: #242c3d;
-            border-color: #3e4b63;
-            color: #63b3ed;
-        }
-
-        body.dark-mode .comp-table td {
-            background: #171c26;
-            border-color: #2d3748;
+            border-color: #38465f;
             color: #cbd5e0;
         }
 
-        body.dark-mode .comp-table tr.active-row td {
-            background: #21202b;
-            color: #fbd38d;
+        body.dark-mode .action-btn:hover {
+            background: #263146;
         }
 
-        body.dark-mode .footer-note {
-            border-top-color: #2d3748;
-            color: #718096;
+        body.dark-mode .btn-like:hover {
+            color: #ff8b7b;
+            border-color: #ff6b5b;
+            background: #331f24;
         }
 
-        /* ========================================
-           모바일 반응형 최적화 (Mobile Optimization)
-        ======================================== */
-        @media (max-width: 720px) {
+        body.dark-mode .btn-dislike:hover {
+            color: #90cdf4;
+            border-color: #63b3ed;
+            background: #1c2738;
+        }
+
+        body.dark-mode .replies-container {
+            background: #18202d;
+            border-left-color: #4299e1;
+        }
+
+        body.dark-mode .reply-item {
+            border-bottom-color: #273347;
+        }
+
+        body.dark-mode .reply-item-user {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .reply-item-text {
+            color: #cbd5e0;
+        }
+
+        body.dark-mode .reply-form {
+            background: #18202d;
+            border-color: #2d3a50;
+        }
+
+        body.dark-mode .guest-input,
+        body.dark-mode .reply-input-name,
+        body.dark-mode .reply-input-msg {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #ffffff;
+        }
+
+        body.dark-mode .guest-card-user {
+            color: #63b3ed;
+        }
+
+        body.dark-mode .wave-select {
+            background: #242c3d;
+            border-color: #3e4b63;
+            color: #e2e8f0;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 680px) {
             body {
-                padding: 10px 6px;
+                padding: 10px 5px;
             }
 
-            .wrapper {
-                padding: 10px;
-                border-radius: 8px;
+            .content-layout {
+                grid-template-columns: 1fr;
             }
 
-            .inner-box {
-                padding: 12px;
-                border-radius: 6px;
+            .photo-frame img {
+                max-width: 260px;
+                margin: 0 auto;
             }
 
             .header {
                 flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-
-            .header-left {
-                justify-content: space-between;
-                width: 100%;
+                align-items: flex-start;
             }
 
             .header-right {
@@ -808,57 +819,12 @@
                 justify-content: space-between;
             }
 
-            .content-layout {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            .left-profile {
-                padding: 12px;
-            }
-
-            .photo-frame {
-                max-width: 200px;
-                margin: 0 auto;
-            }
-
-            .step-card {
-                padding: 12px;
-            }
-
-            .step-actions {
+            .form-inputs {
                 flex-direction: column;
-                align-items: stretch;
             }
 
-            .btn-link {
+            #guestNameInput, #guestMsgInput {
                 width: 100%;
-                padding: 12px 14px;
-                font-size: 13px;
-                min-height: 44px; /* 터치 친화적 높이 */
-            }
-
-            .btn-outline {
-                font-size: 12px;
-                padding: 10px 14px;
-            }
-
-            .step-card-top {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .title-text {
-                font-size: 13px;
-            }
-            .step-title {
-                font-size: 13px;
-            }
-            .step-desc {
-                font-size: 11px;
             }
         }
     </style>
@@ -871,16 +837,16 @@
         <div class="header">
             <div class="header-left">
                 <div class="visitor-count">
-                    TODAY <span class="today">777</span> | TOTAL 1004
+                    TODAY <span class="today">486</span> | TOTAL 99999
                 </div>
                 <div class="title-text">
-                    ★☆..[재윤]e의 소개 프로젝트 목차..☆★
+                    ★☆..[재윤]e의 행복한 미니홈피..☆★
                 </div>
             </div>
 
             <div class="header-right">
                 <!-- 다크모드 전환 버튼 -->
-                <button id="themeToggleBtn" class="retro-btn theme-toggle-btn" aria-label="테마 전환">
+                <button id="themeToggleBtn" class="retro-btn theme-toggle-btn">
                     <span id="themeIcon">🌙</span> <span id="themeText">다크모드</span>
                 </button>
 
@@ -893,229 +859,134 @@
             </div>
         </div>
 
-        <!-- 흘러가는 전광판 (싸이월드 감성) -->
+        <!-- 흘러가는 전광판 (싸이월드/버디 감성) -->
         <div class="marquee-bar">
             <div class="marquee-inner">
-                ✦ [목차 안내] 강재윤의 소개 페이지 프로젝트에 오신 것을 환영합니다! ✦ 1단계 기본 HTML부터 3단계 인터랙티브 JS까지 아래 버튼을 눌러 이동해보세요 ✦ 모바일 화면 터치 완벽 지원 ✦ 다크모드 & BGM 지원 ✦ 퍼가요~♡ ✦
+                ✦ 2000년대 감성 충전 완료! ✦ 방명록에 발도장 꾹! 추천 & 답글 달아주세요 ✦ 음악 중지를 누르면 BGM이 꺼집니다 ✦ 다크모드 지원! ✦ 락앤롤 베이비 🥁 ✦
             </div>
         </div>
 
-        <!-- 본문 2단 레이아웃 (모바일에서는 1단 세로 스택) -->
+        <!-- 본문 2단 레이아웃 -->
         <div class="content-layout">
             <!-- 좌측 프로필 영역 -->
-            <aside class="left-profile">
+            <div class="left-profile">
                 <div class="today-is">
-                    TODAY IS ... <span>목차 탐험 ★★★★★</span>
+                    TODAY IS ... <span>행복 ★★★★★</span>
                 </div>
 
-                <!-- 사진 (스티커 사진 느낌) -->
+                <!-- 사진 (스티커 사진 / 미니룸 느낌) -->
                 <div class="photo-frame">
-                    <img src="C:/Users/jykan/.gemini/antigravity/brain/eb4cfa31-53f5-4d1b-a20f-e626d3af38e8/.user_uploaded/media_1791975146362_489cbffe.jpg" alt="강재윤의 프로필 사진" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\' viewBox=\'0 0 200 200\'><rect fill=\'%23c0d8f0\' width=\'200\' height=\'200\'/><text fill=\'%2310599a\' font-family=\'sans-serif\' font-size=\'16\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\'>★ 강재윤 ★</text></svg>';">
-                    <div class="photo-caption">#얼짱각도45도 #프로젝트목차 #싸이감성</div>
+                    <img src="profile.jpg" alt="강재윤의 프로필 사진">
+                    <div class="photo-caption">#얼짱각도45도 #싸이감성 #우정샷</div>
                 </div>
 
                 <!-- 버디버디 메신저 상태메시지 -->
                 <div class="buddy-bubble">
                     <span class="buddy-id">[버디] drum_god_jaeyoon</span><br>
-                    "원하는 과제 단계를 클릭하면 바로 이동합니ㄷr...★"
+                    "ㄴr는 ㄱr끔... 리듬을 탄ㄷr...★"
                 </div>
 
                 <div class="profile-status">
                     <strong>이름 :</strong> 강재윤<br>
-                    <strong>프로젝트 :</strong> 자기소개 웹페이지<br>
-                    <strong>과제 구성 :</strong> 총 3단계 (HTML/CSS/JS)<br>
-                    <strong>안내 :</strong> 아래 버튼 또는 파도타기를 통해 각 파일로 이동하세요! づ_ど
+                    <strong>성별 :</strong> 멋쟁이<br>
+                    <strong>일촌수 :</strong> 1,004명<br>
+                    <strong>소개 :</strong> 친구들아 반가워! 방명록에 발도장 꾹 찍고 가줘~ づ_ど
                 </div>
 
-                <!-- 빠른 이동 파도타기 셀렉트 박스 -->
-                <div class="wave-select-box">
-                    <label for="waveSelect" class="wave-select-label">🌊 빠른 파도타기 이동</label>
-                    <select id="waveSelect" class="wave-select">
-                        <option value="">-- 페이지 바로가기 --</option>
-                        <option value="1-html.html">📄 1단계: 1-html.html (HTML)</option>
-                        <option value="2-css.html">🎨 2단계: 2-css.html (CSS)</option>
-                        <option value="3-js.html">⚡ 3단계: 3-js.html (JS 완성본)</option>
+                <div>
+                    <select class="wave-select">
+                        <option>파도타기 🌊</option>
+                        <option>싸이월드 베스트</option>
+                        <option>버디버디 친구목록</option>
+                        <option>일촌 홈피 가기</option>
                     </select>
                 </div>
-            </aside>
+            </div>
 
-            <!-- 우측 메인 콘텐츠 (목차 리스트) -->
-            <main class="main-content">
-                <!-- 섹션 타이틀 -->
+            <!-- 우측 메인 콘텐츠 영역 -->
+            <div class="main-content">
+                <!-- 이름 섹션 -->
                 <div class="section-header">
-                    <span>Index :: 소개 페이지 목차 바로가기</span>
-                    <span class="sub">Total 3 Pages</span>
+                    <span>Profile :: 나를 소개합니다</span>
+                    <span class="sub">Updated 2026.10.14</span>
                 </div>
+                <p style="font-size: 13px; line-height: 1.6;">
+                    안녕하세요! 제 이름은 <strong>강재윤</strong>입니다.<br>
+                    제 미니홈피에 찾아와 주신 모든 분들 환영해요! (づ￣ ³￣)づ~♡
+                </p>
 
-                <div class="intro-desc">
-                    안녕하세요! 웹 개발 과제로 제작된 <strong>강재윤의 단계별 자기소개 페이지 모음</strong>입니다.<br>
-                    각 단계별 버튼을 클릭하여 순수 HTML 뼈대부터 완성형 인터랙티브 미니홈피까지 감상해보세요.
+                <!-- 좋아하는 것 3가지 -->
+                <div class="section-header">
+                    <span>Favorite :: 내가 좋아하는 3가지</span>
+                    <span class="sub">스크랩 허용</span>
                 </div>
-
-                <!-- 목차 카드 목록 -->
-                <div class="step-list">
-                    <!-- 1단계: HTML -->
-                    <article class="step-card">
-                        <div class="step-card-top">
-                            <div class="step-badge-wrap">
-                                <span class="step-badge">STEP 01</span>
-                                <span class="file-name-tag">1-html.html</span>
-                            </div>
-                            <span class="step-status-tag">✔ 뼈대 구성 완료</span>
+                <ul class="like-list">
+                    <li class="like-item">
+                        <span class="like-badge">01</span>
+                        <div class="like-text">
+                            <strong>게임 (Game)</strong> - 친구들과 함께 즐기는 신작 & 추억의 명작 게임! 🎮
                         </div>
-
-                        <div class="step-title">
-                            <span>📄 1단계: 순수 HTML 기본 소개 페이지</span>
+                    </li>
+                    <li class="like-item">
+                        <span class="like-badge">02</span>
+                        <div class="like-text">
+                            <strong>드럼 (Drum)</strong> - 심장을 울리는 파워 비트! 리듬에 미쳐 살아갑니다 🥁
                         </div>
-
-                        <p class="step-desc">
-                            스타일 시트 없이 웹 표준 기본 태그(h1, img, ul, li 등)만으로 자기소개, 프로필 사진, 좋아하는 것 3가지, 친구들에게 한마디를 충실하게 구조화한 첫 번째 단계 페이지입니다.
-                        </p>
-
-                        <div class="step-tags">
-                            <span class="tag-pill">#순수HTML</span>
-                            <span class="tag-pill">#웹표준기본구조</span>
-                            <span class="tag-pill">#프로필사진</span>
-                            <span class="tag-pill">#리스트목록</span>
+                    </li>
+                    <li class="like-item">
+                        <span class="like-badge">03</span>
+                        <div class="like-text">
+                            <strong>음악 감상 (Music)</strong> - 싸이월드 BGM 감성 명곡 들으며 힐링하기 🎧
                         </div>
+                    </li>
+                </ul>
 
-                        <div class="step-actions">
-                            <a href="1-html.html" class="btn-link btn-primary">
-                                <span>🚀 1-html.html 열기</span>
-                            </a>
-                            <a href="1-html.html" target="_blank" rel="noopener noreferrer" class="btn-link btn-outline">
-                                <span>새 창으로 열기 ↗</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- 2단계: CSS -->
-                    <article class="step-card">
-                        <div class="step-card-top">
-                            <div class="step-badge-wrap">
-                                <span class="step-badge">STEP 02</span>
-                                <span class="file-name-tag">2-css.html</span>
-                            </div>
-                            <span class="step-status-tag">✔ 스타일링 완료</span>
-                        </div>
-
-                        <div class="step-title">
-                            <span>🎨 2단계: 싸이월드 감성 CSS 미니홈피</span>
-                        </div>
-
-                        <p class="step-desc">
-                            2000년대 감성의 싸이월드 미니홈피와 버디버디 메신저 스타일을 CSS로 구현했습니다. 하늘색 도트 배경 패턴, 이중 박스 레이아웃, 스티커 사진 프레임, 다이어리 감성 디자인이 적용되었습니다.
-                        </p>
-
-                        <div class="step-tags">
-                            <span class="tag-pill">#CSS3스타일링</span>
-                            <span class="tag-pill">#싸이월드도트스킨</span>
-                            <span class="tag-pill">#버디버디말풍선</span>
-                            <span class="tag-pill">#2단그리드레이아웃</span>
-                        </div>
-
-                        <div class="step-actions">
-                            <a href="2-css.html" class="btn-link btn-primary">
-                                <span>🎨 2-css.html 열기</span>
-                            </a>
-                            <a href="2-css.html" target="_blank" rel="noopener noreferrer" class="btn-link btn-outline">
-                                <span>새 창으로 열기 ↗</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- 3단계: JS (최종본) -->
-                    <article class="step-card highlight">
-                        <div class="step-card-top">
-                            <div class="step-badge-wrap">
-                                <span class="step-badge highlight">STEP 03 ★ 추천</span>
-                                <span class="file-name-tag">3-js.html</span>
-                            </div>
-                            <span class="step-status-tag" style="color: #ff5500;">★ 최종 완성본</span>
-                        </div>
-
-                        <div class="step-title">
-                            <span>⚡ 3단계: 인터랙티브 동적 미니홈피 (JS)</span>
-                        </div>
-
-                        <p class="step-desc">
-                            JavaScript를 도입하여 완전한 동적 웹을 완성했습니다. 실시간 라이트/다크 테마 토글, Web Audio API를 활용한 8비트 감성 BGM 신디사이저, LocalStorage 기반 방명록 댓글/추천/비추천/답글 시스템이 작동합니다.
-                        </p>
-
-                        <div class="step-tags">
-                            <span class="tag-pill">#JavaScript동적기능</span>
-                            <span class="tag-pill">#실시간다크모드</span>
-                            <span class="tag-pill">#WebAudio_BGM합성</span>
-                            <span class="tag-pill">#방명록_추천_답글</span>
-                            <span class="tag-pill">#LocalStorage영구보존</span>
-                        </div>
-
-                        <div class="step-actions">
-                            <a href="3-js.html" class="btn-link btn-accent">
-                                <span>⚡ 3-js.html (완성본) 열기</span>
-                            </a>
-                            <a href="3-js.html" target="_blank" rel="noopener noreferrer" class="btn-link btn-outline">
-                                <span>새 창으로 열기 ↗</span>
-                            </a>
-                        </div>
-                    </article>
+                <!-- 친구들에게 한마디 (다이어리 감성) -->
+                <div class="section-header">
+                    <span>Diary :: 친구들에게 보내는 편지</span>
+                    <span class="sub">2026.10.14 맑음 ☀️</span>
                 </div>
-
-                <!-- 단계별 비교 요약 테이블 -->
-                <section class="comparison-section">
-                    <div class="comparison-title">
-                        <span>📊 단계별 발전 과정 한눈에 보기</span>
+                <div class="message-box">
+                    <span class="date">2026.10.14 19:30 | 공개설정: 전체공개</span>
+                    <div class="cy-font">
+                        앞으로 재미있게 잘 지내보자!<br>
+                        같이 피씨방 가서 게임할 친구, 음악 얘기할 친구 언제든 환영이야.<br>
+                        글 보고 그냥 가지 말고 밑에 <strong>방명록</strong>에 이름이랑 한마디 꼭 남겨줘~! 퍼가요~♡
                     </div>
-                    <div class="table-responsive">
-                        <table class="comp-table">
-                            <thead>
-                                <tr>
-                                    <th>단계</th>
-                                    <th>파일명</th>
-                                    <th>주요 기술</th>
-                                    <th>핵심 특징</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>1단계</strong></td>
-                                    <td><code>1-html.html</code></td>
-                                    <td>Pure HTML</td>
-                                    <td>기본 텍스트 및 사진 마크업</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>2단계</strong></td>
-                                    <td><code>2-css.html</code></td>
-                                    <td>HTML + CSS</td>
-                                    <td>2000년대 미니홈피 도트 스킨 & 레이아웃</td>
-                                </tr>
-                                <tr class="active-row">
-                                    <td><strong>3단계 ★</strong></td>
-                                    <td><code>3-js.html</code></td>
-                                    <td>HTML + CSS + JS</td>
-                                    <td>다크모드, 8bit BGM, 방명록/답글/추천 기능</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <div class="footer-note">
-                    ★☆.. 본 페이지는 모바일과 데스크톱 화면 모두에 최적화되어 있습니다 ..☆★<br>
-                    Created for Jaeyoon's Introduction Web Project ✦ All rights reserved.
                 </div>
-            </main>
+
+                <!-- 방명록 섹션 (Guestbook with Reply & Vote) -->
+                <div class="guestbook-section">
+                    <div class="guestbook-title">
+                        <span>📖 방명록 (Guestbook)</span>
+                        <span id="guestCount" style="font-size: 10px; color: #888;">총 3개</span>
+                    </div>
+
+                    <!-- 방명록 작성 폼 -->
+                    <form id="guestbookForm" class="guestbook-form">
+                        <div class="form-inputs">
+                            <input type="text" id="guestNameInput" class="guest-input" placeholder="이름 (예: 김일촌)" maxlength="12" required>
+                            <input type="text" id="guestMsgInput" class="guest-input" placeholder="남길 말을 적어주세요 (예: 퍼가요~♡)" maxlength="80" required>
+                            <button type="submit" class="retro-btn" style="font-weight: bold; background: #ff7733; color: #fff; border-color: #ffaa77;">등록 ✍️</button>
+                        </div>
+                    </form>
+
+                    <!-- 방명록 목록 -->
+                    <div id="guestbookList" class="guestbook-list">
+                        <!-- JavaScript를 통해 동적으로 렌더링됩니다 -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- ========================================
-     자바스크립트 기능 (테마, BGM, 내비게이션)
+     자바스크립트 (JavaScript 기능 구현)
 ======================================== -->
 <script>
     /* ----------------------------------------------------
        1. 다크모드 전환 기능 (Theme Toggle)
-       - 3-js.html과 동일한 localStorage 키('cyworld_theme') 공유
     ---------------------------------------------------- */
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const themeIcon = document.getElementById('themeIcon');
@@ -1145,19 +1016,9 @@
     });
 
     /* ----------------------------------------------------
-       2. 빠른 파도타기 셀렉트 내비게이션
-    ---------------------------------------------------- */
-    const waveSelect = document.getElementById('waveSelect');
-    waveSelect.addEventListener('change', (e) => {
-        const targetUrl = e.target.value;
-        if (targetUrl) {
-            window.location.href = targetUrl;
-        }
-    });
-
-    /* ----------------------------------------------------
-       3. 배경음악(BGM) 제어 기능 (Web Audio API Synthesizer)
-       - 3-js.html과 동일한 오르골 멜로디 재생
+       2. 배경음악(BGM) 제어 기능 (Web Audio API Synthesizer)
+       - 외부 파일 없이 브라우저 자체 음원으로 감성 멜로디 연주
+       - '음악 중지' 버튼 클릭 시 즉시 음소거 및 정지
     ---------------------------------------------------- */
     const bgmToggleBtn = document.getElementById('bgmToggleBtn');
     const bgmStatus = document.getElementById('bgmStatus');
@@ -1189,7 +1050,7 @@
             const AudioContextClass = window.AudioContext || window.webkitAudioContext;
             audioCtx = new AudioContextClass();
             masterGain = audioCtx.createGain();
-            masterGain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            masterGain.gain.setValueAtTime(0.12, audioCtx.currentTime); // 포근하고 은은한 볼륨
             masterGain.connect(audioCtx.destination);
         }
     }
@@ -1200,7 +1061,7 @@
         const osc = audioCtx.createOscillator();
         const noteGain = audioCtx.createGain();
 
-        osc.type = 'triangle';
+        osc.type = 'triangle'; // 오르골 느낌의 부드러운 삼각파
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
         const now = audioCtx.currentTime;
@@ -1249,6 +1110,7 @@
         bgmToggleBtn.textContent = '▶ 음악 재생';
     }
 
+    // 음악 중지 / 재생 토글 버튼 이벤트
     bgmToggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (isPlaying) {
@@ -1258,7 +1120,7 @@
         }
     });
 
-    // 브라우저 자동재생 정책에 맞춰 첫 클릭 시 BGM 자동 재생
+    // 브라우저의 자동재생 제한 정책에 따라, 사용자가 페이지를 처음 클릭하면 자동으로 부드럽게 BGM 시작
     let userInteracted = false;
     function autoStartOnFirstTouch() {
         if (!userInteracted && !isPlaying) {
@@ -1266,12 +1128,344 @@
             startMusic();
         }
         window.removeEventListener('click', autoStartOnFirstTouch);
-        window.removeEventListener('touchstart', autoStartOnFirstTouch);
         window.removeEventListener('keydown', autoStartOnFirstTouch);
     }
     window.addEventListener('click', autoStartOnFirstTouch);
-    window.addEventListener('touchstart', autoStartOnFirstTouch, { passive: true });
     window.addEventListener('keydown', autoStartOnFirstTouch);
+
+    /* ----------------------------------------------------
+       3. 방명록 기능 (Guestbook with Timestamp, Replies & Votes)
+       - 이름, 남길 말, 작성 시간(YYYY.MM.DD HH:mm:ss)
+       - 추천(Like) / 비추천(Dislike) 카운터
+       - 답글(Reply) 작성 및 삭제 기능
+       - LocalStorage 영구 보존
+    ---------------------------------------------------- */
+    const guestbookForm = document.getElementById('guestbookForm');
+    const guestNameInput = document.getElementById('guestNameInput');
+    const guestMsgInput = document.getElementById('guestMsgInput');
+    const guestbookList = document.getElementById('guestbookList');
+    const guestCount = document.getElementById('guestCount');
+
+    // 기본 방명록 데이터 (추천, 비추천, 답글 포함)
+    const initialGuests = [
+        { 
+            id: 1, 
+            name: "김비트", 
+            msg: "야 오늘 드럼 세션 대박이었음 ㅋㅋㅋ 리듬감 미쳤다!", 
+            time: "2026.10.14 19:20:15",
+            likes: 6,
+            dislikes: 0,
+            replies: [
+                { id: 101, name: "강재윤", msg: "고맙다 친구야! 다음 주에 또 합주하자 🥁", time: "2026.10.14 19:22:30" }
+            ]
+        },
+        { 
+            id: 2, 
+            name: "박게임", 
+            msg: "재윤아 오늘 저녁에 랭겜 한판 돌리자 ㄱㄱ 대기타라", 
+            time: "2026.10.14 19:15:42",
+            likes: 4,
+            dislikes: 1,
+            replies: [
+                { id: 201, name: "강재윤", msg: "디코 들어와 있어라 바로 간다 🎮", time: "2026.10.14 19:18:10" }
+            ]
+        },
+        { 
+            id: 3, 
+            name: "일촌친구", 
+            msg: "홈피 너무 이쁘게 잘 꾸몄네! 퍼가요~♡", 
+            time: "2026.10.14 18:50:09",
+            likes: 9,
+            dislikes: 0,
+            replies: []
+        }
+    ];
+
+    // LocalStorage에서 방명록 불러오기
+    function loadGuestbook() {
+        const stored = localStorage.getItem('cyworld_guestbook');
+        if (stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                // 데이터 무결성 보정 (구버전 데이터 호환)
+                return parsed.map(item => ({
+                    ...item,
+                    likes: typeof item.likes === 'number' ? item.likes : 0,
+                    dislikes: typeof item.dislikes === 'number' ? item.dislikes : 0,
+                    replies: Array.isArray(item.replies) ? item.replies : []
+                }));
+            } catch (e) {
+                return initialGuests;
+            }
+        }
+        return initialGuests;
+    }
+
+    // LocalStorage에 방명록 저장
+    function saveGuestbook(list) {
+        localStorage.setItem('cyworld_guestbook', JSON.stringify(list));
+    }
+
+    // 현재 일시 포맷 (YYYY.MM.DD HH:mm:ss)
+    function getCurrentDateTime() {
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const d = String(now.getDate()).padStart(2, '0');
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        return `${y}.${m}.${d} ${hh}:${mm}:${ss}`;
+    }
+
+    // XSS 방지용 HTML Escape 함수
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    // 추천 / 비추천 처리 함수
+    function handleVote(cardId, type) {
+        const list = loadGuestbook();
+        const target = list.find(item => item.id === cardId);
+        if (target) {
+            if (type === 'like') {
+                target.likes = (target.likes || 0) + 1;
+            } else if (type === 'dislike') {
+                target.dislikes = (target.dislikes || 0) + 1;
+            }
+            saveGuestbook(list);
+            renderGuestbook();
+        }
+    }
+
+    // 답글 추가 처리 함수
+    function addReply(cardId, replyName, replyMsg) {
+        if (!replyName.trim()) {
+            alert('답글 작성자 이름을 입력해주세요!');
+            return false;
+        }
+        if (!replyMsg.trim()) {
+            alert('답글 내용을 입력해주세요!');
+            return false;
+        }
+
+        const list = loadGuestbook();
+        const target = list.find(item => item.id === cardId);
+        if (target) {
+            if (!Array.isArray(target.replies)) {
+                target.replies = [];
+            }
+            target.replies.push({
+                id: Date.now(),
+                name: replyName.trim(),
+                msg: replyMsg.trim(),
+                time: getCurrentDateTime()
+            });
+            saveGuestbook(list);
+            renderGuestbook();
+            return true;
+        }
+        return false;
+    }
+
+    // 답글 삭제 처리 함수
+    function deleteReply(cardId, replyId) {
+        if (confirm('이 답글을 삭제할까요?')) {
+            const list = loadGuestbook();
+            const target = list.find(item => item.id === cardId);
+            if (target && Array.isArray(target.replies)) {
+                target.replies = target.replies.filter(r => r.id !== replyId);
+                saveGuestbook(list);
+                renderGuestbook();
+            }
+        }
+    }
+
+    // 방명록 리스트 화면 렌더링
+    function renderGuestbook() {
+        const list = loadGuestbook();
+        guestCount.textContent = `총 ${list.length}개`;
+        guestbookList.innerHTML = '';
+
+        if (list.length === 0) {
+            guestbookList.innerHTML = '<div style="text-align: center; color: #888; padding: 15px;">아직 작성된 방명록이 없습니다. 첫 발도장을 남겨보세요!</div>';
+            return;
+        }
+
+        list.forEach((item) => {
+            const card = document.createElement('div');
+            card.className = 'guest-card';
+            card.dataset.id = item.id;
+
+            const replies = Array.isArray(item.replies) ? item.replies : [];
+            const likes = item.likes || 0;
+            const dislikes = item.dislikes || 0;
+
+            // 답글 목록 HTML 생성
+            let repliesHtml = '';
+            if (replies.length > 0) {
+                const replyItemsHtml = replies.map(r => `
+                    <div class="reply-item">
+                        <div class="reply-item-header">
+                            <div>
+                                <span class="reply-item-user">ㄴ [일촌] ${escapeHtml(r.name)}</span>
+                                <span class="reply-item-date">(${r.time})</span>
+                            </div>
+                            <button class="guest-del-btn delete-reply-btn" data-card-id="${item.id}" data-reply-id="${r.id}" title="답글 삭제">삭제</button>
+                        </div>
+                        <div class="reply-item-text">${escapeHtml(r.msg)}</div>
+                    </div>
+                `).join('');
+
+                repliesHtml = `
+                    <div class="replies-container">
+                        ${replyItemsHtml}
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div class="guest-card-header">
+                    <div>
+                        <span class="guest-card-user">[일촌] ${escapeHtml(item.name)}</span>
+                        <span class="guest-card-date">(${item.time})</span>
+                    </div>
+                    <button class="guest-del-btn delete-card-btn" data-id="${item.id}" title="글 삭제">삭제</button>
+                </div>
+                <div class="guest-card-text">${escapeHtml(item.msg)}</div>
+
+                <!-- 추천 / 비추천 / 답글 액션 바 -->
+                <div class="guest-card-actions">
+                    <div class="action-left">
+                        <button class="action-btn btn-like" data-id="${item.id}">
+                            👍 추천 <strong>${likes}</strong>
+                        </button>
+                        <button class="action-btn btn-dislike" data-id="${item.id}">
+                            👎 비추천 <strong>${dislikes}</strong>
+                        </button>
+                        <button class="action-btn btn-reply toggle-reply-btn" data-id="${item.id}">
+                            💬 답글 (${replies.length})
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 답글 리스트 -->
+                ${repliesHtml}
+
+                <!-- 답글 입력 폼 (토글 영역) -->
+                <form class="reply-form" id="replyForm-${item.id}">
+                    <input type="text" class="reply-input-name" placeholder="답글 작성자" maxlength="10" required>
+                    <input type="text" class="reply-input-msg" placeholder="답글을 남겨주세요~" maxlength="60" required>
+                    <button type="submit" class="retro-btn" style="background:#ff7733; color:#fff; border-color:#ff9966; font-size:10px; padding:2px 8px;">등록</button>
+                </form>
+            `;
+
+            // 1. 추천 버튼 이벤트
+            card.querySelector('.btn-like').addEventListener('click', () => {
+                handleVote(item.id, 'like');
+            });
+
+            // 2. 비추천 버튼 이벤트
+            card.querySelector('.btn-dislike').addEventListener('click', () => {
+                handleVote(item.id, 'dislike');
+            });
+
+            // 3. 답글 쓰기 토글 버튼 이벤트
+            const replyToggleBtn = card.querySelector('.toggle-reply-btn');
+            const replyForm = card.querySelector(`#replyForm-${item.id}`);
+            replyToggleBtn.addEventListener('click', () => {
+                replyForm.classList.toggle('active');
+                if (replyForm.classList.contains('active')) {
+                    replyForm.querySelector('.reply-input-name').focus();
+                }
+            });
+
+            // 4. 답글 폼 서밋 이벤트
+            replyForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameInput = replyForm.querySelector('.reply-input-name');
+                const msgInput = replyForm.querySelector('.reply-input-msg');
+                const success = addReply(item.id, nameInput.value, msgInput.value);
+                if (success) {
+                    nameInput.value = '';
+                    msgInput.value = '';
+                }
+            });
+
+            // 5. 답글 개별 삭제 버튼 이벤트
+            card.querySelectorAll('.delete-reply-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const cId = Number(e.target.dataset.cardId);
+                    const rId = Number(e.target.dataset.replyId);
+                    deleteReply(cId, rId);
+                });
+            });
+
+            // 6. 메인 글 삭제 버튼 이벤트
+            card.querySelector('.delete-card-btn').addEventListener('click', () => {
+                deleteGuestbookItem(item.id);
+            });
+
+            guestbookList.appendChild(card);
+        });
+    }
+
+    // 방명록 등록 이벤트
+    guestbookForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = guestNameInput.value.trim();
+        const msg = guestMsgInput.value.trim();
+
+        if (!name) {
+            alert('이름을 입력해주세요!');
+            guestNameInput.focus();
+            return;
+        }
+
+        if (!msg) {
+            alert('남길 말을 입력해주세요!');
+            guestMsgInput.focus();
+            return;
+        }
+
+        const list = loadGuestbook();
+        const newItem = {
+            id: Date.now(),
+            name: name,
+            msg: msg,
+            time: getCurrentDateTime(),
+            likes: 0,
+            dislikes: 0,
+            replies: []
+        };
+
+        // 최신 글이 맨 위에 오도록 unshift
+        list.unshift(newItem);
+        saveGuestbook(list);
+
+        // 입력 폼 초기화 및 다시 렌더링
+        guestMsgInput.value = '';
+        renderGuestbook();
+    });
+
+    // 방명록 메인 항목 삭제
+    function deleteGuestbookItem(id) {
+        if (confirm('이 방명록 글과 모든 답글을 삭제할까요?')) {
+            let list = loadGuestbook();
+            list = list.filter(item => item.id !== id);
+            saveGuestbook(list);
+            renderGuestbook();
+        }
+    }
+
+    // 초기 렌더링 실행
+    renderGuestbook();
 </script>
 
 </body>
